@@ -1,0 +1,89 @@
+/* --- Variables y Estilos Globales --- */
+:root {
+    /* Definimos la paleta de colores para usarla fácilmente */
+    --color-azul-principal: #00447A;
+    --color-verde-principal: #83B81A;
+    --color-verde-secundario: #73BA00;
+    --color-celeste-claro: #7BDCFF;
+    --color-blanco: #FFFFFF;
+    --color-fondo-claro: #F2F3F5;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo-claro);
+    color: #333;
+}
+
+/* --- Estructura Principal (Header, Nav, Main, Footer) --- */
+.main-header {
+    background-color: var(--color-azul-principal);
+    color: var(--color-blanco);
+    padding: 20px;
+    text-align: center;
+}
+
+.emergency-nav {
+    display: flex; /* Usar Flexbox para un menú moderno y adaptable */
+    justify-content: center;
+    flex-wrap: wrap; /* Para que se adapte en móviles */
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-bottom: 2px solid var(--color-verde-principal);
+}
+
+.emergency-nav a {
+    text-decoration: none;
+    color: var(--color-azul-principal);
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.emergency-nav a:hover {
+    background-color: var(--color-verde-principal);
+    color: var(--color-blanco);
+}
+
+
+/* --- Estilos para las Secciones de Emergencia --- */
+.emergency-section {
+    padding: 60px 20px; /* Espaciado generoso */
+    border-bottom: 1px solid #ddd;
+}
+
+/* Cada 2 secciones, alternamos el color de fondo para mejor legibilidad */
+.emergency-section:nth-child(even) {
+    background-color: var(--color-blanco);
+}
+
+.emergency-content {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Espacio entre texto e imagen */
+    max-width: 1200px; /* Limita el ancho para que no se estire demasiado en pantallas grandes */
+    margin: 0 auto;
+}
+
+/* Alternamos la posición de la imagen para que sea más dinámico */
+.emergency-section:nth-child(even) .emergency-content {
+    flex-direction: row-reverse; /* Imagen a la izquierda, texto a la derecha */
+}
+
+.emergency-text h2 {
+    color: var(--color-azul-principal);
+    font-size: 2.5em;
+}
+
+.steps-list {
+    line-height: 1.8; /* Aumenta el espacio entre líneas para que sea fácil de leer */
+}
+
+.emergency-media img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
