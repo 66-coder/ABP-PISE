@@ -1,6 +1,5 @@
 /* --- Variables y Estilos Globales --- */
 :root {
-    /* Definimos la paleta de colores para usarla fácilmente */
     --color-azul-principal: #00447A;
     --color-verde-principal: #83B81A;
     --color-verde-secundario: #73BA00;
@@ -16,7 +15,7 @@ body {
     color: #333;
 }
 
-/* --- Estructura Principal (Header, Nav, Main, Footer) --- */
+/* --- Estructura Principal (Layout) --- */
 .main-header {
     background-color: var(--color-azul-principal);
     color: var(--color-blanco);
@@ -25,36 +24,48 @@ body {
 }
 
 .emergency-nav {
-    display: flex; /* Usar Flexbox para un menú moderno y adaptable */
+    /* Estilos combinados y mejorados */
+    background: var(--color-azul-principal); /* Usamos la variable para consistencia */
+    display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Para que se adapte en móviles */
-    background-color: #f8f9fa;
-    padding: 10px;
-    border-bottom: 2px solid var(--color-verde-principal);
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    position: sticky; /* Hacemos que el menú se quede fijo arriba */
+    top: 0;
+    z-index: 1000; /* Asegura que el menú esté sobre todo lo demás */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .emergency-nav a {
     text-decoration: none;
-    color: var(--color-azul-principal);
-    padding: 10px 20px;
+    color: var(--color-blanco);
     font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .emergency-nav a:hover {
     background-color: var(--color-verde-principal);
+    transform: translateY(-2px); /* Efecto de "levantarse" */
+}
+
+.main-footer {
+    background-color: var(--color-azul-principal);
     color: var(--color-blanco);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
 }
 
-
-/* --- Estilos para las Secciones de Emergencia --- */
+/* --- Secciones de Emergencia (Componentes) --- */
 .emergency-section {
-    padding: 60px 20px; /* Espaciado generoso */
+    padding: 60px 20px;
     border-bottom: 1px solid #ddd;
+    overflow: hidden;
 }
 
-/* Cada 2 secciones, alternamos el color de fondo para mejor legibilidad */
 .emergency-section:nth-child(even) {
     background-color: var(--color-blanco);
 }
@@ -62,69 +73,68 @@ body {
 .emergency-content {
     display: flex;
     align-items: center;
-    gap: 40px; /* Espacio entre texto e imagen */
-    max-width: 1200px; /* Limita el ancho para que no se estire demasiado en pantallas grandes */
+    gap: 40px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Alternamos la posición de la imagen para que sea más dinámico */
 .emergency-section:nth-child(even) .emergency-content {
-    flex-direction: row-reverse; /* Imagen a la izquierda, texto a la derecha */
+    flex-direction: row-reverse;
+}
+
+.emergency-text,
+.emergency-media {
+    flex: 1;
+    min-width: 300px;
 }
 
 .emergency-text h2 {
     color: var(--color-azul-principal);
     font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.risk-description {
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
 .steps-list {
-    line-height: 1.8; /* Aumenta el espacio entre líneas para que sea fácil de leer */
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+.steps-list li {
+    margin-bottom: 10px;
 }
 
 .emergency-media img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
 }
-.emergency-nav {
-    background: #07589b; /* azul oscuro */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
 
-  .emergency-nav a {
-    text-decoration: none;
-    color: #FFFFFF; /* blanco */
-    font-weight: bold;
-    padding: 0.5rem 1.2rem;
-    border-radius: 8px;
-    transition: background 0.3s, transform 0.2s, color 0.3s;
-  }
+.emergency-media img:hover {
+    transform: scale(1.03);
+}
 
-  .emergency-nav a:hover {
-    background: #83B81A; /* verde vivo */
-    color: #FFFFFF;
-    transform: translateY(-2px);
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .emergency-nav {
-      justify-content: flex-start;
-      overflow-x: auto;
+/* --- Diseño Responsivo para Móviles --- */
+@media (max-width: 768px) {
+    .emergency-content,
+    .emergency-section:nth-child(even) .emergency-content {
+        flex-direction: column;
+        text-align: center;
     }
+
+    .emergency-text {
+        order: 2; /* El texto va después de la imagen en móvil */
     }
-    .emergency-nav a {
-        flex: 0 0 auto;
-      }
-  .emergency-nav a:active {
-    background: #73BA00; /* verde más oscuro */
-  }
+
+    .emergency-media {
+        order: 1; /* La imagen va primero */
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
