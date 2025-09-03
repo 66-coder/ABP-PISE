@@ -1,1 +1,260 @@
-# Proyecto ABP-PISE
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark">
+  <title>PISE • Plan Integral de Seguridad Escolar</title>
+  <!--
+    PROYECTO: Sección "PISE" para el sitio del colegio
+    OBJETIVO: Informar qué hacer en emergencias dentro del colegio.
+    REQUISITOS:
+      - Paleta: #00447A, #83B81A, #FFFFFF, #7BDCFF, #73BA00, #F2F3F5
+      - Fuente: Arial
+      - 6 emergencias: Incendios, Accidentes, Sismos, Fallas eléctricas, Fugas de gas, Uso de desfibrilador.
+      - Texto provisorio ahora; reemplazar con texto oficial luego.
+      - Diseño formal, accesible, con imágenes y/o videos.
+      - Código documentado y publicable en GitHub.
+
+    INSTRUCCIONES PARA EL EQUIPO (editar/retirar este bloque antes de producción):
+      1) Reemplacen los textos "Lorem ipsum" por el contenido oficial.
+      2) Sustituyan /images/logo.png por el logo del colegio (descargar del sitio oficial si tienen permiso) y agreguen fotos reales (respetando derechos de autor) en /images/.
+      3) Pueden incrustar un video propio subiéndolo a /media o pegando un link de YouTube/Vimeo en el iframe del hero.
+      4) Publiquen en GitHub Pages: crear repo, subir index.html e imágenes, activar Pages (Settings → Pages → Deploy from branch → main /root), esperar a que se publique.
+      5) Accesibilidad: mantener contraste, textos alternativos, navegación con teclado, y avisos aria-live cuando corresponda.
+  -->
+  <style>
+    /* =====================
+       Diseño base y variables
+       ===================== */
+    :root {
+      --azul: #00447A;      /* principal */
+      --verde: #83B81A;     /* acento */
+      --blanco: #FFFFFF;    /* texto/fondos */
+      --celeste: #7BDCFF;   /* detalle */
+      --verde-osc: #73BA00; /* acento secundario */
+      --gris: #F2F3F5;      /* fondo suave */
+
+      --radius: 16px;
+      --shadow: 0 8px 28px rgba(0,0,0,.08);
+      --shadow-sm: 0 4px 16px rgba(0,0,0,.06);
+    }
+
+    html, body { height: 100%; }
+    body {
+      font-family: Arial, Helvetica, sans-serif; /* Requisito de tipografía */
+      margin: 0;
+      background: var(--gris);
+      color: #1b1b1b;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Accesibilidad: link para saltar al contenido */
+    .skip-link {
+      position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      position: fixed; left: 1rem; top: 1rem; width: auto; height: auto; padding: .75rem 1rem;
+      background: var(--azul); color: var(--blanco); border-radius: 8px; z-index: 1000;
+    }
+
+    header {
+      background: linear-gradient(180deg, var(--azul), #03385f);
+      color: var(--blanco);
+      box-shadow: var(--shadow);
+    }
+    .container {
+      max-width: 1100px; margin: 0 auto; padding: 1rem;
+    }
+    .topbar { display: flex; align-items: center; gap: 1rem; padding: .5rem 0; }
+    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: inherit; }
+    .logo img { width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: #fff; }
+    .brand-title { font-size: 1.1rem; font-weight: 700; letter-spacing: .2px; }
+
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.5rem; align-items: center; padding: 1.25rem 0 2rem; }
+    .hero-card {
+      background: var(--blanco); border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .85rem; color: var(--azul); background: #e6f4ff; padding: .35rem .6rem; border-radius: 999px; }
+    .title { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: .5rem 0 0.5rem; }
+    .subtitle { margin: 0 0 1rem; color: #333; }
+
+    .hero-iframe, .hero-img {
+      width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: #000; overflow: hidden;
+    }
+
+    .quick-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .75rem; }
+    .btn {
+      appearance: none; border: 0; border-radius: 999px; padding: .65rem .95rem; font-weight: 700; cursor: pointer;
+      background: var(--verde); color: #0c2800; box-shadow: var(--shadow-sm);
+    }
+    .btn.secondary { background: var(--celeste); color: #003047; }
+    .btn.ghost { background: transparent; color: var(--blanco); border: 2px solid rgba(255,255,255,.7); }
+    .btn:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+
+    /* Tarjetas de emergencias */
+    .grid { display: grid; gap: 1rem; }
+    .grid.emergencias { grid-template-columns: repeat(12, 1fr); }
+    @media (max-width: 960px){ .hero { grid-template-columns: 1fr; } }
+    @media (min-width: 700px){ .grid.cols-2 { grid-template-columns: repeat(2, 1fr);} }
+    @media (min-width: 960px){ .grid.cols-3 { grid-template-columns: repeat(3, 1fr);} }
+    @media (min-width: 960px){ .grid.emergencias > * { grid-column: span 4; } }
+    @media (min-width: 700px) and (max-width: 959px){ .grid.emergencias > * { grid-column: span 6; } }
+    @media (max-width: 699px){ .grid.emergencias > * { grid-column: span 12; } }
+
+    .card {
+      background: var(--blanco); border-radius: var(--radius); box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,.06); overflow: clip; display: grid; grid-template-rows: auto 1fr auto;
+    }
+    .card-media { height: 160px; background-size: cover; background-position: center; }
+    .card-body { padding: 1rem 1rem .5rem; }
+    .tag { display: inline-flex; align-items: center; gap: .5rem; background: #eef7ff; color: var(--azul); padding: .35rem .6rem; border-radius: 999px; font-size: .8rem; font-weight: 700; }
+    .risk { font-weight: 700; color: #1a2a3a; margin: .6rem 0; }
+    .risk small { display: block; color: #4b4b4b; font-weight: 400; }
+
+    /* Acordeón accesible */
+    details { border-top: 1px solid #eceff3; }
+    summary {
+      list-style: none; cursor: pointer; padding: .9rem 1rem; font-weight: 700; display: flex; align-items: center; justify-content: space-between;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .chevron { transition: transform .2s ease; }
+    details[open] .chevron { transform: rotate(180deg); }
+    .steps { padding: 0 1rem 1rem; }
+    .steps ol { padding-left: 1.2rem; margin: .2rem 0; }
+    .steps li { margin: .3rem 0; }
+
+    /* Sección de descargas y contacto */
+    .well { background: #ffffff; border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); border: 1px solid rgba(0,0,0,.06); }
+    .well .list { display: grid; gap: .5rem; }
+
+    footer {
+      margin-top: 2rem; padding: 1rem 0; background: #0d2c4a; color: #cde7ff;
+    }
+
+    /* Preferencia de usuario para reducir movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      .chevron { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Header / Marca -->
+  <header role="banner">
+    <div class="container topbar">
+      <a class="logo" href="https://insucoabg.cl/" target="_blank" rel="noopener noreferrer">
+        <!-- Reemplazar por el logo oficial del colegio -->
+        <img src="images/logo.png" alt="Logo del Colegio (reemplazar por oficial)" />
+        <div>
+          <div class="brand-title">Colegio Comercial Alejandro Bravo Silva</div>
+          <div aria-hidden="true" style="opacity:.9; font-size:.85rem">Sección PISE • Plan Integral de Seguridad Escolar</div>
+        </div>
+      </a>
+      <div style="margin-left:auto; display:flex; gap:.5rem;">
+        <button class="btn ghost" onclick="window.print()" aria-label="Imprimir esta página">Imprimir</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="container" role="main">
+    <!-- Hero: resumen e iframe para video institucional / simulacro -->
+    <section class="hero" aria-labelledby="titulo-pise">
+      <div class="hero-card" role="region" aria-label="Resumen del PISE">
+        <span class="eyebrow">PISE</span>
+        <h1 id="titulo-pise" class="title">Plan Integral de Seguridad Escolar</h1>
+        <p class="subtitle">
+          Protocolo oficial del colegio para actuar de forma <strong>segura, ordenada y rápida</strong>
+          ante emergencias. <em>Contenido provisorio</em> hasta recibir textos definitivos del equipo.
+        </p>
+        <div class="quick-actions" role="group" aria-label="Acciones rápidas">
+          <a class="btn" href="#emergencias">Ver protocolos</a>
+          <a class="btn secondary" href="#descargas">Descargar afiches</a>
+          <button class="btn ghost" id="toggle-contraste" aria-pressed="false">Alto contraste</button>
+        </div>
+      </div>
+      <!-- Incrustar video (reemplazar src por YouTube/Vimeo del colegio) -->
+      <iframe class="hero-iframe" title="Video de simulacro o presentación PISE (provisorio)" src="" allowfullscreen aria-hidden="true"></iframe>
+    </section>
+
+    <!-- Tarjetas de emergencias -->
+    <section id="emergencias" aria-labelledby="titulo-emergencias">
+      <h2 id="titulo-emergencias" class="title" style="font-size:1.4rem">Protocolos por tipo de emergencia</h2>
+      <p style="margin-top:-.5rem; color:#333">Seleccione una tarjeta para ver los pasos. Reemplace los textos por el contenido oficial.</p>
+
+      <div class="grid emergencias" role="list">
+        <!-- Incendios -->
+        <article class="card" role="listitem" aria-labelledby="incendios-titulo">
+          <div class="card-media" style="background-image:url('images/incendios.jpg');" role="img" aria-label="Imagen ilustrativa de incendio"></div>
+          <div class="card-body">
+            <span class="tag" aria-label="Tipo de emergencia">🔥 Incendios</span>
+            <h3 id="incendios-titulo" class="risk">Riesgo: fuego, humo y calor
+              <small>Texto provisorio: descripción breve del riesgo y zonas seguras.</small>
+            </h3>
+          </div>
+          <details>
+            <summary>
+              <span>Pasos a seguir</span>
+              <svg class="chevron" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="steps">
+              <ol>
+                <li>Activar alarma y avisar a personal responsable. (provisorio)</li>
+                <li>Evacuar por rutas señalizadas sin correr. (provisorio)</li>
+                <li>Reunirse en punto de encuentro y pasar lista. (provisorio)</li>
+                <li>No usar ascensores. (provisorio)</li>
+                <li>Seguir instrucciones del encargado de emergencia. (provisorio)</li>
+              </ol>
+            </div>
+          </details>
+        </article>
+
+        <!-- Accidentes -->
+        <article class="card" role="listitem" aria-labelledby="accidentes-titulo">
+          <div class="card-media" style="background-image:url('images/accidentes.jpg');" role="img" aria-label="Imagen ilustrativa de accidente"></div>
+          <div class="card-body">
+            <span class="tag">🩹 Accidentes</span>
+            <h3 id="accidentes-titulo" class="risk">Riesgo: lesiones y primeros auxilios
+              <small>Texto provisorio: indicaciones de contención y derivación.</small>
+            </h3>
+          </div>
+          <details>
+            <summary>
+              <span>Pasos a seguir</span>
+              <svg class="chevron" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="steps">
+              <ol>
+                <li>Evaluar seguridad de la escena. (provisorio)</li>
+                <li>Solicitar apoyo al referente de primeros auxilios. (provisorio)</li>
+                <li>No mover a la persona salvo riesgo mayor. (provisorio)</li>
+                <li>Contactar a apoderado/servicios si corresponde. (provisorio)</li>
+                <li>Registrar el incidente. (provisorio)</li>
+              </ol>
+            </div>
+          </details>
+        </article>
+
+        <!-- Sismos -->
+        <article class="card" role="listitem" aria-labelledby="sismos-titulo">
+          <div class="card-media" style="background-image:url('images/sismos.jpg');" role="img" aria-label="Imagen ilustrativa de sismo"></div>
+          <div class="card-body">
+            <span class="tag">🌎 Sismos</span>
+            <h3 id="sismos-titulo" class="risk">Riesgo: caída de objetos y estructuras
+              <small>Texto provisorio: protocolo de agacharse, cubrirse y afirmarse.</small>
+            </h3>
+          </div>
+          <details>
+            <summary>
+              <span>Pasos a seguir</span>
+              <svg class="chevron" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="steps">
+              <ol>
+                <li>Durante el sismo: agacharse, cubrirse, afirmarse. (provisorio)</l
