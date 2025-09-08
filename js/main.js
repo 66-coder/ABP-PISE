@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Lógica para resaltar el enlace de la sección activa en el menú
+// Lógica para resaltar el enlace de la sección activa en el menú
 const sections = document.querySelectorAll('.emergency-section');
 const navLinks = document.querySelectorAll('.emergency-nav a');
 
@@ -34,14 +35,22 @@ window.addEventListener('scroll', () => {
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 150) { // 150 es un umbral para activar el enlace un poco antes
+        if (pageYOffset >= sectionTop - 150) {
             current = section.getAttribute('id');
         }
     });
+    
+    // Zona neutral en la parte superior
+    if (pageYOffset < 250) {
+        current = '';
+    }
 
+    // Bucle corregido para aplicar la clase 'active'
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
+        // ESTA ES LA LÍNEA CORREGIDA:
+        // Solo añade la clase si 'current' NO está vacío.
+        if (current && link.getAttribute('href').includes(current)) {
             link.classList.add('active');
         }
     });
