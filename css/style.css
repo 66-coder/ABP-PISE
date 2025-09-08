@@ -58,6 +58,11 @@ body {
     transition: background-color 0.3s, transform 0.2s;
 }
 
+.emergency-nav a.active {
+    background-color: var(--color-verde-principal);
+    transform: translateY(-2px);
+}
+
 .emergency-nav a:hover {
     background-color: var(--color-verde-principal);
     transform: translateY(-2px);
@@ -129,12 +134,61 @@ body {
     font-size: 1.1em;
 }
 
+/* --- Estilos mejorados para la lista de pasos --- */
 .steps-list {
-    padding-left: 20px;
+    list-style: none; /* Quitamos los números por defecto */
+    counter-reset: steps-counter; /* Iniciamos un contador */
+    padding-left: 0;
 }
 
 .steps-list li {
-    margin-bottom: 10px;
+    counter-increment: steps-counter; /* Aumentamos el contador en cada 'li' */
+    margin-bottom: 15px; /* Un poco más de espacio */
+    position: relative;
+    padding-left: 50px; /* Hacemos espacio para el número personalizado */
+}
+
+.steps-list li::before {
+    content: counter(steps-counter); /* Mostramos el número del contador */
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-verde-principal);
+    color: var(--color-blanco);
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* --- Componentes Adicionales --- */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-verde-principal);
+    color: var(--color-blanco);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-decoration: none;
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(100px); /* Empieza fuera de la pantalla */
+}
+
+.back-to-top.visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición */
 }
 
 /* --- Elementos Multimedia (Imágenes) --- */
