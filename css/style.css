@@ -31,36 +31,57 @@ h1, h2, h3, .hero-button, .emergency-nav a {
    ========================================================================== */
 
 /* --- Barra de Navegación --- */
+/* --- Barra de Navegación --- */
 .emergency-nav {
-    background: var(--color-azul-principal);
+    background: var(--color-blanco);
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
-.emergency-nav a {
+/* --- Estilos para el Logo --- */
+.nav-logo img {
+    height: 45px;
+    width: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.nav-logo img:hover {
+    transform: scale(1.35); /* Este es el efecto que sí funciona */
+}
+
+/* --- Contenedor de los enlaces --- */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* --- Estilos para cada enlace individual de emergencia --- */
+.nav-links a {
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
-    color: var(--color-blanco);
+    color: var(--color-azul-principal);
     font-weight: bold;
-    padding: 0.5rem 1.2rem;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
-    transition: background-color 0.3s, transform 0.2s;
+    /* ESTA LÍNEA ES CLAVE: Prepara la animación */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease-out;
 }
 
-.emergency-nav a.active {
+/* ESTA REGLA ES CLAVE: Aplica el efecto al pasar el mouse o al estar activo */
+.nav-links a:hover,
+.nav-links a.active {
     background-color: var(--color-verde-principal);
-    transform: translateY(-2px);
-}
-
-.emergency-nav a:hover {
-    background-color: var(--color-verde-principal);
-    transform: translateY(-2px);
+    color: var(--color-blanco);
+    transform: translateY(-3px); /* El efecto de "levantarse" */
 }
 
 /* --- Pie de Página --- */
