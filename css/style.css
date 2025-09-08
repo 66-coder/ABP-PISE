@@ -1,21 +1,33 @@
-/* --- Variables y Estilos Globales --- */
-:root {
+/* ==========================================================================
+   1. Variables y Estilos Globales v1
+   ========================================================================== */
+
+   :root {
+    /* Paleta de Colores */
     --color-azul-principal: #00447A;
     --color-verde-principal: #83B81A;
     --color-verde-secundario: #73BA00;
     --color-celeste-claro: #7BDCFF;
     --color-blanco: #FFFFFF;
     --color-fondo-claro: #F2F3F5;
+    --color-texto-base: #333;
+    --color-borde-suave: #ddd;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: var(--color-fondo-claro);
-    color: #333;
+    color: var(--color-texto-base);
+    line-height: 1.6; /* Mejora la legibilidad general */
 }
 
-/* --- Estructura Principal (Layout) --- */
+
+/* ==========================================================================
+   2. Estructura Principal (Layout)
+   ========================================================================== */
+
+/* --- Encabezado --- */
 .main-header {
     background-color: var(--color-azul-principal);
     color: var(--color-blanco);
@@ -23,17 +35,17 @@ body {
     text-align: center;
 }
 
+/* --- Barra de Navegación --- */
 .emergency-nav {
-    /* Estilos combinados y mejorados */
-    background: var(--color-azul-principal); /* Usamos la variable para consistencia */
+    background: var(--color-azul-principal);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
     padding: 0.75rem 1rem;
-    position: sticky; /* Hacemos que el menú se quede fijo arriba */
+    position: sticky;
     top: 0;
-    z-index: 1000; /* Asegura que el menú esté sobre todo lo demás */
+    z-index: 1000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
@@ -48,9 +60,10 @@ body {
 
 .emergency-nav a:hover {
     background-color: var(--color-verde-principal);
-    transform: translateY(-2px); /* Efecto de "levantarse" */
+    transform: translateY(-2px);
 }
 
+/* --- Pie de Página --- */
 .main-footer {
     background-color: var(--color-azul-principal);
     color: var(--color-blanco);
@@ -59,10 +72,15 @@ body {
     margin-top: 40px;
 }
 
-/* --- Secciones de Emergencia (Componentes) --- */
+
+/* ==========================================================================
+   3. Componentes de la Página
+   ========================================================================== */
+
+/* --- Contenedor de Sección de Emergencia --- */
 .emergency-section {
     padding: 60px 20px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--color-borde-suave);
     overflow: hidden;
 }
 
@@ -82,25 +100,36 @@ body {
     flex-direction: row-reverse;
 }
 
+/* --- Columnas de Texto e Imagen --- */
 .emergency-text,
 .emergency-media {
     flex: 1;
     min-width: 300px;
 }
 
+/* --- Elementos de Texto Dentro de las Secciones --- */
 .emergency-text h2 {
     color: var(--color-azul-principal);
     font-size: 2.5em;
+    margin-top: 0;
     margin-bottom: 20px;
+}
+
+.emergency-text h2::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-verde-principal); /* Cambié el color para que contraste más */
+    margin-bottom: 15px;
 }
 
 .risk-description {
     margin-bottom: 25px;
-    line-height: 1.6;
+    font-size: 1.1em;
 }
 
 .steps-list {
-    line-height: 1.8;
     padding-left: 20px;
 }
 
@@ -108,6 +137,7 @@ body {
     margin-bottom: 10px;
 }
 
+/* --- Elementos Multimedia (Imágenes) --- */
 .emergency-media img {
     width: 100%;
     height: auto;
@@ -120,7 +150,11 @@ body {
     transform: scale(1.03);
 }
 
-/* --- Diseño Responsivo para Móviles --- */
+
+/* ==========================================================================
+   4. Diseño Responsivo para Móviles
+   ========================================================================== */
+
 @media (max-width: 768px) {
     .emergency-content,
     .emergency-section:nth-child(even) .emergency-content {
@@ -129,12 +163,21 @@ body {
     }
 
     .emergency-text {
-        order: 2; /* El texto va después de la imagen en móvil */
+        order: 2; /* El texto va después de la imagen */
     }
 
     .emergency-media {
         order: 1; /* La imagen va primero */
         width: 90%;
         margin-bottom: 20px;
+    }
+
+    .emergency-text h2 {
+        font-size: 2em; /* Reducimos un poco el tamaño del título en móvil */
+    }
+
+    .emergency-text h2::before {
+        margin-left: auto; /* Centra la línea decorativa en móvil */
+        margin-right: auto;
     }
 }
