@@ -82,9 +82,10 @@ body {
    ========================================================================== */
 /* --- Sección de Bienvenida (Hero) --- */
 .hero-section {
-    background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('../images/colegio-fondo.jpg');
+    background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('images/colegio-fondo.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed; /* Efecto parallax */
     color: var(--color-blanco);
     text-align: center;
