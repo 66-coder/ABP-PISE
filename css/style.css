@@ -16,24 +16,19 @@
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; /* Arial para textos largos */
     background-color: var(--color-fondo-claro);
     color: var(--color-texto-base);
-    line-height: 1.6; /* Mejora la legibilidad general */
+    line-height: 1.6;
 }
 
+h1, h2, h3, .hero-button, .emergency-nav a {
+    font-family: 'Poppins', sans-serif; /* Poppins para títulos y botones */
+}
 
 /* ==========================================================================
    2. Estructura Principal (Layout)
    ========================================================================== */
-
-/* --- Encabezado --- */
-.main-header {
-    background-color: var(--color-azul-principal);
-    color: var(--color-blanco);
-    padding: 20px;
-    text-align: center;
-}
 
 /* --- Barra de Navegación --- */
 .emergency-nav {
@@ -82,13 +77,14 @@ body {
    ========================================================================== */
 /* --- Sección de Bienvenida (Hero) --- */
 .hero-section {
-    background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('../images/colegio-fondo.jpg');
+    background-image: linear-gradient(rgba(0, 68, 122, 0.85), rgba(0, 68, 122, 0.85)), url('../images/colegio-fondo.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efecto parallax */
+    background-attachment: fixed;
     color: var(--color-blanco);
     text-align: center;
-    padding: 100px 20px;
+    /* Aumentamos el padding para darle más aire y presencia */
+    padding: 120px 20px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,18 +95,25 @@ body {
 }
 
 .hero-title {
-    font-size: 3.5em;
-    margin-bottom: 10px;
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.8em; /* Hacemos el título principal más grande */
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    margin-bottom: 15px;
 }
 
 .hero-subtitle {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-family: Arial, sans-serif; /* Mantenemos Arial para el párrafo */
+    font-size: 1.25em;
+    margin-bottom: 35px;
     line-height: 1.7;
+    max-width: 600px; /* Hacemos la línea de texto un poco más corta */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-button {
+    font-family: 'Poppins', sans-serif;
     background-color: var(--color-verde-principal);
     color: var(--color-blanco);
     padding: 15px 30px;
@@ -125,6 +128,13 @@ body {
     transform: scale(1.05);
 }
 
+.hero-title {
+    font-size: 3.5em;
+    font-weight: 700; /* Usamos el grosor "bold" que importamos */
+    letter-spacing: -1px; /* Un pequeño ajuste para juntar las letras */
+    margin-bottom: 10px;
+}
+
 /* --- Ajuste para que el botón se vea bien en móviles --- */
 @media (max-width: 768px) {
     .hero-title {
@@ -133,18 +143,25 @@ body {
 }
 
 /* ==========================================================================
-   3. Componentes de la Página
+   4. Componentes de la Página
    ========================================================================== */
 
 /* --- Contenedor de Sección de Emergencia --- */
+/* Modifica la regla de .emergency-section */
 .emergency-section {
     padding: 60px 20px;
-    border-bottom: 1px solid var(--color-borde-suave);
     overflow: hidden;
+    /* border-bottom: 1px solid var(--color-borde-suave); */ /* Ya no necesitamos el borde */
 }
 
+/* Aplica esto a las secciones con fondo blanco para que se vea la sombra */
 .emergency-section:nth-child(even) {
     background-color: var(--color-blanco);
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); /* Sombra sutil */
+    margin: 40px auto; /* Espacio vertical y centrado horizontal */
+    max-width: 1200px; /* Asegura que la tarjeta no ocupe todo el ancho */
+    border-top: 5px solid var(--color-verde-principal); /* Borde decorativo superior */
 }
 
 .emergency-content {
@@ -260,7 +277,7 @@ body {
 
 
 /* ==========================================================================
-   4. Diseño Responsivo para Móviles
+   5. Diseño Responsivo para Móviles
    ========================================================================== */
 
 @media (max-width: 768px) {
