@@ -77,7 +77,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
    ========================================================================== */
 /* --- Sección de Bienvenida (Hero) --- */
 .hero-section {
-    background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('images/colegio-fondo.jpg');
+    background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('../images/colegio-fondo.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
