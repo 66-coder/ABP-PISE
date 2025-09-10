@@ -380,7 +380,52 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         margin-right: auto;
     }
 }
-<<<<<<< HEAD
+
+
+
+/* ==========================================================================
+   6. Bordes Laterales Animados - Efecto Sutil
+   ========================================================================== */
+
+   .side-animation {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 5px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(131, 184, 26, 0.6), transparent);
+    opacity: 0.6;
+    animation: floatLeft 1s infinite alternate;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 68, 122, 0.6), transparent);
+    animation: floatRight 1s infinite alternate;
+}
+
+@keyframes floatLeft {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes floatRight {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(20px);
+    }
+}
 /* --- Estilos para la Barra Superior de Contacto --- */
 .top-bar {
     background-color: #00447A; /* Color azul oscuro principal */
@@ -445,50 +490,3 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         border-color: #83B81A;     /* Borde al pasar el mouse: VERDE/AMARILLO */
 }
 =======
-
-
-
-/* ==========================================================================
-   6. Bordes Laterales Animados - Efecto Sutil
-   ========================================================================== */
-
-   .side-animation {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    width: 5px;
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(to bottom, transparent, rgba(131, 184, 26, 0.6), transparent);
-    opacity: 0.6;
-    animation: floatLeft 1s infinite alternate;
-}
-
-.left {
-    left: 0;
-}
-
-.right {
-    right: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0, 68, 122, 0.6), transparent);
-    animation: floatRight 1s infinite alternate;
-}
-
-@keyframes floatLeft {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
-}
-
-@keyframes floatRight {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(20px);
-    }
-}
->>>>>>> a044355904c82f35129cbd90e6c9633a9fb60b1b
