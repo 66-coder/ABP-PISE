@@ -113,98 +113,131 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 }
 
 /* ==========================================================================
-   3. Introduccion Pagina
+   3. Introduccion Pagina - Mejorado
    ========================================================================== */
-/* --- Sección de Bienvenida (Hero) --- */
-.hero-section {
+
+   .hero-section {
     background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('../images/colegio-fondo.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Efecto parallax */
-    color: var(--color-blanco);
+    background-attachment: fixed;
+    color: white;
     text-align: center;
-    /* Aumentamos el padding para darle más aire y presencia */
-    padding: 100px 20px; 
+    padding: 120px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 300px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
     max-width: 800px;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
 }
 
 .hero-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 3.8em; /* Hacemos el título principal más grande */
+    font-size: 3.5em;
     font-weight: 700;
-    letter-spacing: -1.5px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: slideUp 1s forwards;
 }
 
 .hero-subtitle {
-    font-family: Arial, sans-serif; /* Mantenemos Arial para el párrafo */
-    font-size: 1.25em;
-    margin-bottom: 35px;
-    line-height: 1.7;
-    max-width: 600px; /* Hacemos la línea de texto un poco más corta */
-    margin-left: auto;
-    margin-right: auto;
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    animation: fadeIn 1s forwards;
 }
 
-.hero-button {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--color-verde-principal);
-    color: var(--color-blanco);
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
+.hero-button:hover::after {
+    left: 100%;
 }
 
-.hero-button:hover {
-    background-color: var(--color-verde-secundario);
-    transform: scale(1.05);
+.hero-line {
+    width: 100px;
+    height: 4px;
+    background-color: #83B81A;
+    margin: 30px auto 0;
+    animation: growLine 1.5s forwards;
 }
 
-.hero-title {
-    font-size: 3.5em;
-    font-weight: 700; /* Usamos el grosor "bold" que importamos */
-    letter-spacing: -1px; /* Un pequeño ajuste para juntar las letras */
-    margin-bottom: 10px;
-}
-
-/* --- Ajuste para que el botón se vea bien en móviles --- */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5em;
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growLine {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100px;
+        opacity: 1;
+    }
+}
 /* ==========================================================================
    4. Componentes de la Página
    ========================================================================== */
 
 /* --- Contenedor de Sección de Emergencia --- */
-/* Modifica la regla de .emergency-section */
 .emergency-section {
+    background-color: var(--color-blanco);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    margin: 40px auto;
+    max-width: 1200px;
+    border-top: 5px solid var(--color-verde-principal);
     padding: 70px 30px;
     overflow: hidden;
-    scroll-margin-top: 200px; /* <-- AÑADE ESTA LÍNEA */
-    /* border-bottom: 1px solid var(--color-borde-suave); */ /* Ya no necesitamos el borde */
+    scroll-margin-top: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 
-/* Aplica esto a las secciones con fondo blanco para que se vea la sombra */
-.emergency-section:nth-child(even) {
-    background-color: var(--color-blanco);
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); /* Sombra sutil */
-    margin: 40px auto; /* Espacio vertical y centrado horizontal */
-    max-width: 1200px; /* Asegura que la tarjeta no ocupe todo el ancho */
-    border-top: 5px solid var(--color-verde-principal); /* Borde decorativo superior */
+.emergency-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 .emergency-content {
@@ -215,9 +248,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     margin: 0 auto;
 }
 
-.emergency-section:nth-child(even) .emergency-content {
-    flex-direction: row-reverse;
-}
+
 
 /* --- Columnas de Texto e Imagen --- */
 .emergency-text,
@@ -347,5 +378,51 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     .emergency-text h2::before {
         margin-left: auto; /* Centra la línea decorativa en móvil */
         margin-right: auto;
+    }
+}
+
+
+
+/* ==========================================================================
+   6. Bordes Laterales Animados - Efecto Sutil
+   ========================================================================== */
+
+   .side-animation {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 5px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(131, 184, 26, 0.6), transparent);
+    opacity: 0.6;
+    animation: floatLeft 1s infinite alternate;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 68, 122, 0.6), transparent);
+    animation: floatRight 1s infinite alternate;
+}
+
+@keyframes floatLeft {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes floatRight {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(20px);
     }
 }
