@@ -349,3 +349,66 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         margin-right: auto;
     }
 }
+/* --- Estilos para la Barra Superior de Contacto --- */
+.top-bar {
+    background-color: #00447A; /* Color azul oscuro principal */
+    color: white;
+    padding: 8px 0; /* Relleno vertical para hacerla delgada */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.top-bar-container {
+    display: flex;
+    justify-content: space-between; /* Pone los elementos en los extremos */
+    align-items: center; /* Centra verticalmente */
+    
+    /* Limita el ancho y centra el contenido en la página */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px; /* Espacio en los costados */
+}
+
+/* --- Estilos para los íconos de la derecha --- */
+.top-bar-right {
+    display: flex;
+    gap: 10px; /* Espacio entre los círculos */
+}
+
+.top-bar-right a {
+    background-color: white; /* Fondo inicial del círculo: BLANCO */
+    color: #00447A; /* Color inicial del ícono: AZUL OSCURO */
+    text-decoration: none;
+    
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+    
+    /* Creación del círculo */
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid white;
+    border-radius: 50%; /* Esto hace que sea un círculo perfecto */
+    
+    /* Centrado del ícono dentro del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Transición suave para el efecto hover */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre los íconos */
+.top-bar-right a:hover {
+        background-color: #182af3; /* Fondo al pasar el mouse: VERDE/AMARILLO */
+        color: white;              /* Color del ícono al pasar el mouse: BLANCO */
+        border-color: #83B81A;     /* Borde al pasar el mouse: VERDE/AMARILLO */
+}
