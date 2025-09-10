@@ -99,10 +99,11 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     color: var(--color-blanco);
     text-align: center;
     /* Aumentamos el padding para darle más aire y presencia */
-    padding: 120px 20px; 
+    padding: 100px 20px; 
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 300px;
 }
 
 .hero-content {
@@ -164,8 +165,9 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 /* --- Contenedor de Sección de Emergencia --- */
 /* Modifica la regla de .emergency-section */
 .emergency-section {
-    padding: 60px 20px;
+    padding: 70px 30px;
     overflow: hidden;
+    scroll-margin-top: 200px; /* <-- AÑADE ESTA LÍNEA */
     /* border-bottom: 1px solid var(--color-borde-suave); */ /* Ya no necesitamos el borde */
 }
 
