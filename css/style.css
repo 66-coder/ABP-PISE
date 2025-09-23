@@ -491,7 +491,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 }
 
 /* ==========================================================================
-   7. Nuevo Pie de Página (VERSIÓN CON CORRECCIÓN DE TAMAÑO DE LOGO)
+   7. Nuevo Pie de Página (VERSIÓN FINAL Y CORRECTA)
    ========================================================================== */
 
 .new-footer {
@@ -526,12 +526,10 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     text-align: center;
 }
 
-/* --- ESTA ES LA CORRECCIÓN DEFINITIVA --- */
+/* ESTA REGLA APLICA EL TAMAÑO GRANDE AL LOGO DEL FOOTER */
 .footer-logo img {
-    /* Se elimina 'max-width' y se usa 'height' para controlar el tamaño,
-       igual que en la barra de navegación para mantener la proporción exacta. */
-    height: 90px;  /* Puedes ajustar este valor si lo quieres más grande o más pequeño */
-    width: auto;   /* El ancho se ajustará automáticamente */
+    height: 90px;
+    width: auto;
     transition: transform 0.5s ease;
 }
 
