@@ -620,3 +620,137 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         justify-content: center;
     }
 }
+/* Estilos generales (para pantallas grandes) */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-title {
+    font-size: 3rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+}
+
+.emergency-section {
+    padding: 40px 0;
+}
+
+/* Media Queries para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem; /* Reducir el tamaño de la fuente en pantallas pequeñas */
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .emergency-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .emergency-text {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .steps-list {
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    .steps-list li {
+        margin: 10px 0;
+    }
+
+    .emergency-media {
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    .footer-contact {
+        text-align: center;
+    }
+
+    .footer-social a {
+        font-size: 1.5rem;
+        margin: 10px;
+    }
+
+    .footer-bottom-bar {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+/* Media Queries para pantallas más pequeñas (dispositivos móviles en orientación vertical) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+
+    .footer-social a {
+        font-size: 1.3rem;
+    }
+
+    .footer-contact p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Media Queries para pantallas extra grandes (por ejemplo, tablets o pantallas grandes) */
+@media (min-width: 1200px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.8rem;
+    }
+
+    .emergency-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .emergency-media {
+        width: 50%;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        gap: 15px;
+    }
+
+    .footer-social a {
+        font-size: 1.8rem;
+    }
+}
