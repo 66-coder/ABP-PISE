@@ -488,3 +488,136 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         color: white;              /* Color del ícono al pasar el mouse: BLANCO */
         border-color: #83B81A;     /* Borde al pasar el mouse: VERDE/AMARILLO */
 }
+
+/* ==========================================================================
+   7. Nuevo Pie de Página (VERSIÓN CON CORRECCIÓN DE TAMAÑO DE LOGO)
+   ========================================================================== */
+
+.new-footer {
+    background-color: var(--color-azul-principal);
+    background-image: url('https://insucoabg.cl/wp-content/uploads/2025/05/fondo-footer-linea.png');
+    background-size: cover;
+    background-position: center top;
+    color: var(--color-blanco);
+    font-family: Arial, sans-serif;
+    padding-top: 40px;
+}
+
+/* --- Contenedor superior (logo e info) --- */
+.footer-top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* --- Columna del Logo --- */
+.footer-logo {
+    text-align: center;
+}
+
+/* --- ESTA ES LA CORRECCIÓN DEFINITIVA --- */
+.footer-logo img {
+    /* Se elimina 'max-width' y se usa 'height' para controlar el tamaño,
+       igual que en la barra de navegación para mantener la proporción exacta. */
+    height: 90px;  /* Puedes ajustar este valor si lo quieres más grande o más pequeño */
+    width: auto;   /* El ancho se ajustará automáticamente */
+    transition: transform 0.5s ease;
+}
+
+.footer-logo a:hover img {
+    transform: scale(1.1);
+}
+
+/* --- Columna de Contacto --- */
+.footer-contact {
+    text-align: left;
+}
+
+/* Iconos de Redes Sociales */
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    color: var(--color-blanco);
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a .fab {
+    font-family: "Font Awesome 6 Brands";
+    font-weight: 400;
+}
+
+.footer-social a:hover {
+    color: var(--color-verde-principal);
+    transform: scale(1.1);
+}
+
+/* Línea separadora */
+.footer-separator {
+    border: 0;
+    height: 2px;
+    background-color: var(--color-blanco);
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+/* Información de contacto */
+.contact-info p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.contact-info a {
+    color: var(--color-celeste-claro);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--color-verde-principal);
+    text-decoration: underline;
+}
+
+/* --- Barra inferior de copyright --- */
+.footer-bottom-bar {
+    background-color: #00335A;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 13px;
+    margin-top: 30px;
+}
+
+.footer-bottom-bar p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Adaptación para Móviles --- */
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-contact {
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
