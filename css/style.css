@@ -182,13 +182,14 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 .emergency-section {
     background-color: var(--color-blanco);
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-    margin: 40px auto;
-    max-width: 1200px;
-    border-top: 5px solid var(--color-verde-principal);
-    padding: 60px 45px; /* <-- CAMBIO 3: Más espacio lateral y menos vertical */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+    margin: 24px auto;
+    max-width: 900px;
+    width: 92%;
+    border-top: 4px solid var(--color-verde-principal);
+    padding: 32px 18px;
     overflow: hidden;
-    scroll-margin-top: 90px; /* <-- CAMBIO 1: Ajuste para el menú pegajoso */
+    scroll-margin-top: 80px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -200,8 +201,8 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 .emergency-content {
     display: flex;
     align-items: center;
-    gap: 40px;
-    max-width: 1200px;
+    gap: 24px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -217,23 +218,23 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 
 .emergency-text h2 {
     color: var(--color-azul-principal);
-    font-size: 2.5em;
+    font-size: 2em;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .emergency-text h2::before {
     content: '';
     display: block;
-    width: 120px; /* <-- CAMBIO 2: Línea superior más ancha y lineal */
-    height: 4px;
+    width: 80px;
+    height: 3px;
     background-color: var(--color-verde-principal);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .risk-description {
-    margin-bottom: 25px;
-    font-size: 1.1em;
+    margin-bottom: 16px;
+    font-size: 1em;
 }
 
 .steps-list {
@@ -307,16 +308,32 @@ h1, h2, h3, .hero-button, .emergency-nav a {
    5. Diseño Responsivo para Móviles
    ========================================================================== */
 
+@media (max-width: 900px) {
+    .emergency-section {
+        max-width: 98vw;
+        padding: 20px 6vw;
+    }
+    .emergency-content {
+        gap: 12px;
+        max-width: 98vw;
+    }
+}
+
 @media (max-width: 768px) {
     .emergency-content,
     .emergency-section:nth-child(even) .emergency-content {
         flex-direction: column;
         text-align: center;
     }
+    .emergency-section {
+        padding: 14px 2vw;
+        margin: 12px auto;
+    }
     .emergency-text { order: 2; }
-    .emergency-media { order: 1; width: 90%; margin-bottom: 20px; }
-    .emergency-text h2 { font-size: 2em; }
-    .emergency-text h2::before { margin-left: auto; margin-right: auto; }
+    .emergency-media { order: 1; width: 98%; margin-bottom: 12px; }
+    .emergency-text h2 { font-size: 1.3em; }
+    .emergency-text h2::before { margin-left: auto; margin-right: auto; width: 50px; }
+    .risk-description { font-size: 0.98em; }
 }
 
 /* ==========================================================================
