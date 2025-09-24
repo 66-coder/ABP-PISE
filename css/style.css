@@ -1,8 +1,8 @@
 /* ==========================================================================
-   1. Variables y Estilos Globales v1
+   1. Variables y Estilos Globales v2 (CON CORRECCIONES)
    ========================================================================== */
 
-   :root {
+:root {
     /* Paleta de Colores */
     --color-azul-principal: #00447A;
     --color-verde-principal: #83B81A;
@@ -14,16 +14,23 @@
     --color-borde-suave: #ddd;
 }
 
+/* CORRECCIÓN: Evita desbordamientos y problemas de tamaño */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif; /* Arial para textos largos */
+    font-family: Arial, sans-serif;
     background-color: var(--color-fondo-claro);
     color: var(--color-texto-base);
     line-height: 1.6;
+    /* CORRECCIÓN: Elimina la barra de scroll horizontal */
+    overflow-x: hidden; 
 }
 
 h1, h2, h3, .hero-button, .emergency-nav a {
-    font-family: 'Poppins', sans-serif; /* Poppins para títulos y botones */
+    font-family: 'Poppins', sans-serif;
 }
 
 /* ==========================================================================
@@ -51,9 +58,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 
 .nav-links {
     display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 1rem;
 }
 
 .nav-links a {
@@ -68,112 +73,59 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     gap: 0.5rem;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.emergency-nav a:not(.logo-link):hover {
     background-color: var(--color-verde-secundario);
     color: var(--color-texto-base);
     transform: translateY(-2px);
 }
 
-.emergency-nav a {
-    text-decoration: none;
-    color: var(--color-azul-principal);
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: background-color 0.3s, transform 0.2s;
-    font-family: 'Poppins', sans-serif;
-}
-
-.emergency-nav a:not(.logo-link):hover,
-.emergency-nav a:not(.logo-link).active {
+.nav-links a.active {
     background-color: var(--color-verde-principal);
-    transform: translateY(-2px);
+    color: var(--color-blanco) !important;
 }
 
-/* --- Pie de Página --- */
-.main-footer {
-    background-color: var(--color-azul-principal);
-    color: var(--color-blanco);
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-}
-
-.logo-link img {
-    transition: transform 0.5s ease;
-}
-
-.logo-link:hover img {
-    transform: scale(1.15);
+.nav-toggle,
+.nav-close {
+    display: none;
 }
 
 /* ==========================================================================
-   3. Introduccion Pagina - Mejorado
+   3. Introduccion Pagina
    ========================================================================== */
 
 .hero-section {
     background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('../images/colegio-fondo.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
     color: white;
     text-align: center;
-    padding: 120px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 60px;
-    position: relative;
-    overflow: hidden;
+    padding: 100px 20px;
+    margin-bottom: 40px;
 }
 
 .hero-content {
     max-width: 800px;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: fadeInUp 1s forwards;
+    margin: 0 auto;
 }
 
 .hero-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 3.5em;
+    font-size: 3em;
     font-weight: 700;
     margin-bottom: 20px;
-    letter-spacing: -1px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    animation: slideUp 1s forwards;
 }
 
 .hero-subtitle {
-    font-family: Arial, sans-serif;
     font-size: 1.2em;
-    line-height: 1.8;
     margin-bottom: 30px;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    animation: fadeIn 1s forwards;
-}
-
-.hero-button:hover::after {
-    left: 100%;
 }
 
 .hero-line {
     width: 100px;
     height: 4px;
-    background-color: #83B81A;
-    margin: 30px auto 0;
-    animation: growLine 1.5s forwards;
+    background-color: var(--color-verde-principal);
+    margin: 0 auto;
 }
-
-/* Animaciones */
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes growLine { to { width: 100px; opacity: 1; } }
 
 /* ==========================================================================
    4. Componentes de la Página
@@ -182,66 +134,56 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 .emergency-section {
     background-color: var(--color-blanco);
     border-radius: 15px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
-    margin: 24px auto;
-    max-width: 900px;
-    width: 92%;
-    border-top: 4px solid var(--color-verde-principal);
-    padding: 32px 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    margin: 40px auto;
+    max-width: 1200px;
+    width: 95%;
+    border-top: 5px solid var(--color-verde-principal);
+    padding: 60px 45px;
     overflow: hidden;
-    scroll-margin-top: 80px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.emergency-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    scroll-margin-top: 90px;
 }
 
 .emergency-content {
     display: flex;
     align-items: center;
-    gap: 24px;
-    max-width: 900px;
-    margin: 0 auto;
+    gap: 40px;
 }
 
 .emergency-text {
-    flex: 1.2; /* <-- CAMBIO 3: Da más espacio al texto que a la imagen */
-    min-width: 300px;
+    flex: 1.2;
 }
 
 .emergency-media {
     flex: 1;
-    min-width: 300px;
 }
 
 .emergency-text h2 {
     color: var(--color-azul-principal);
-    font-size: 2em;
+    font-size: 2.5em;
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .emergency-text h2::before {
     content: '';
     display: block;
-    width: 80px;
-    height: 3px;
+    width: 120px;
+    height: 4px;
     background-color: var(--color-verde-principal);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .risk-description {
-    margin-bottom: 16px;
-    font-size: 1em;
+    margin-bottom: 25px;
+    font-size: 1.1em;
 }
 
 .steps-list {
     list-style: none;
     counter-reset: steps-counter;
     padding-left: 0;
-    margin-top: 15px; /* <-- CAMBIO 3: Reduce el espacio sobre la lista */
+    margin-top: 15px;
 }
 
 .steps-list li {
@@ -249,13 +191,14 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     margin-bottom: 15px;
     position: relative;
     padding-left: 50px;
+    line-height: 1.5;
 }
 
 .steps-list li::before {
     content: counter(steps-counter);
     position: absolute;
     left: 0;
-    top: -2px;
+    top: 0;
     width: 35px;
     height: 35px;
     background-color: var(--color-verde-principal);
@@ -276,7 +219,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
@@ -284,10 +227,10 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     transition: opacity 0.3s, transform 0.3s;
     opacity: 0;
     transform: translateY(100px);
+    z-index: 999;
 }
 
 .back-to-top.visible {
-    display: flex;
     opacity: 1;
     transform: translateY(0);
 }
@@ -297,70 +240,17 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
 }
 
-.emergency-media img:hover {
-    transform: scale(1.03);
-}
 
 /* ==========================================================================
-   5. Diseño Responsivo para Móviles
+   5. BORDES, FOOTER Y OTROS
    ========================================================================== */
-
-@media (max-width: 900px) {
-    .emergency-section {
-        max-width: 98vw;
-        padding: 20px 6vw;
-    }
-    .emergency-content {
-        gap: 12px;
-        max-width: 98vw;
-    }
-}
-
-@media (max-width: 768px) {
-    .emergency-content,
-    .emergency-section:nth-child(even) .emergency-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .emergency-section {
-        padding: 14px 2vw;
-        margin: 12px auto;
-    }
-    .emergency-text { order: 2; }
-    .emergency-media { order: 1; width: 98%; margin-bottom: 12px; }
-    .emergency-text h2 { font-size: 1.3em; }
-    .emergency-text h2::before { margin-left: auto; margin-right: auto; width: 50px; }
-    .risk-description { font-size: 0.98em; }
-}
-
-/* ==========================================================================
-   6. Bordes Laterales Animados y Barra Superior
-   ========================================================================== */
-
-.side-animation {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    width: 5px;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.6;
-}
-.left { left: 0; background: linear-gradient(to bottom, transparent, rgba(131, 184, 26, 0.6), transparent); animation: floatLeft 1s infinite alternate; }
-.right { right: 0; background: linear-gradient(to bottom, transparent, rgba(0, 68, 122, 0.6), transparent); animation: floatRight 1s infinite alternate; }
-
-@keyframes floatLeft { to { transform: translateY(-20px); } }
-@keyframes floatRight { to { transform: translateY(20px); } }
 
 .top-bar {
     background-color: #00447A;
     color: white;
-    padding: 9px 0;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+    padding: 9px 20px;
 }
 .top-bar-container {
     display: flex;
@@ -368,41 +258,31 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px;
 }
 .top-bar-right { display: flex; gap: 10px; }
 .top-bar-right a {
     background-color: white;
     color: #00447A;
-    text-decoration: none;
-    width: 32px;
-    height: 32px;
+    width: 27px;
+    height: 27px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    width: 27px;
-    height: 27px;
+    transition: all 0.3s ease;
     border: 1.5px solid white;
+    text-decoration: none;
 }
 .top-bar-right a:hover {
     background-color: #83B81A;
     color: white;
-    border-color: #83B81A;
 }
-
-/* ==========================================================================
-   7. Nuevo Pie de Página
-   ========================================================================== */
 
 .new-footer {
     background-color: var(--color-azul-principal);
-    background-image: url('https://insucoabg.cl/wp-content/uploads/2025/05/fondo-footer-linea.png');
     background-size: cover;
     background-position: center top;
     color: var(--color-blanco);
-    font-family: Arial, sans-serif;
     padding-top: 40px;
 }
 
@@ -416,19 +296,15 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     flex-wrap: wrap;
     gap: 30px;
 }
-.footer-column { flex: 1; min-width: 300px; }
-.footer-logo { text-align: center; }
-.footer-logo img { height: 90px; width: auto; transition: transform 0.5s ease; }
-.footer-logo a:hover img { transform: scale(1.1); }
+.footer-column { flex: 1; min-width: 280px; }
+.footer-logo img { height: 90px; }
 .footer-contact { text-align: left; }
 .footer-social { display: flex; gap: 15px; margin-bottom: 20px; }
-.footer-social a { color: var(--color-blanco); font-size: 18px; transition: color 0.3s ease, transform 0.3s ease; }
-.footer-social a .fab { font-family: "Font Awesome 6 Brands"; font-weight: 400; }
-.footer-social a:hover { color: var(--color-verde-principal); transform: scale(1.1); }
-.footer-separator { border: 0; height: 2px; background-color: var(--color-blanco); opacity: 0.8; margin-bottom: 20px; }
+.footer-social a { color: var(--color-blanco); font-size: 18px; text-decoration: none; }
+.footer-separator { border: 0; height: 1px; background-color: rgba(255, 255, 255, 0.5); }
 .contact-info p { margin: 8px 0; font-size: 14px; }
-.contact-info a { color: var(--color-celeste-claro); text-decoration: none; transition: color 0.3s ease; }
-.contact-info a:hover { color: var(--color-verde-principal); text-decoration: underline; }
+.contact-info a { color: var(--color-celeste-claro); text-decoration: none; }
+.contact-info a:hover { text-decoration: underline; }
 
 .footer-bottom-bar {
     background-color: #00335A;
@@ -437,18 +313,141 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     font-size: 13px;
     margin-top: 30px;
 }
-.footer-bottom-bar p { margin: 0; color: rgba(255, 255, 255, 0.8); }
-
-@media (max-width: 768px) {
-    .footer-top { flex-direction: column; text-align: center; }
-    .footer-contact { text-align: center; }
-    .footer-social { justify-content: center; }
-}
 
 /* ==========================================================================
-   8. Media Queries Adicionales (Duplicados Eliminados)
+   6. DISEÑO RESPONSIVO PARA MÓVILES (TODO EN UN SOLO LUGAR)
    ========================================================================== */
 
-/* NOTA: He eliminado las media queries duplicadas al final de tu archivo original
-   para evitar conflictos y mantener el código limpio. Las reglas responsivas
-   principales están en la sección 5 y se complementan con las del footer. */
+@media (max-width: 900px) {
+
+    /* --- AJUSTES GENERALES DEL CONTENIDO --- */
+    .emergency-content {
+        flex-direction: column;
+    }
+    .emergency-section {
+        /* CORRECCIÓN: Secciones menos apretadas */
+        padding: 30px 25px; 
+        width: 92%;
+    }
+    .emergency-text h2 { 
+        /* CORRECCIÓN: Título más pequeño */
+        font-size: 1.8em; 
+    }
+    .risk-description, .steps-list li { 
+        font-size: 1em; 
+    }
+    .steps-list li {
+        text-align: left;
+    }
+    .steps-list li::before {
+        width: 32px;
+        height: 32px;
+    }
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-contact {
+        text-align: center;
+    }
+    .footer-social {
+        justify-content: center;
+    }
+
+
+    /* --- MENÚ HAMBURGUESA CORREGIDO --- */
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-verde-principal);
+        color: var(--color-blanco);
+        border: none;
+        border-radius: 8px;
+        width: 45px;
+        height: 40px;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1100; /* Debe estar por encima de todo */
+    }
+    
+    .emergency-nav {
+        padding: 10px 20px;
+    }
+    
+    .nav-links {
+        /* Ocultamos los links de la barra */
+        display: none;
+    }
+
+    /* ESTADO ACTIVO DEL MENÚ (cuando se hace clic) */
+    .nav-links.active {
+        display: flex; /* Hacemos visible el menú */
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100%;
+        background-color: var(--color-blanco);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 80px;
+        gap: 0;
+        transform: translateX(0);
+        box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+        /* CORRECCIÓN: Z-index para que el menú esté SOBRE el fondo oscuro */
+        z-index: 1050; 
+    }
+    
+    .nav-links.active a {
+        font-size: 1.1rem;
+        width: 100%;
+        padding: 18px 30px;
+        border-bottom: 1px solid var(--color-fondo-claro);
+        border-radius: 0;
+        color: var(--color-azul-principal);
+        font-weight: 600;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .nav-links.active a:hover {
+        background-color: var(--color-fondo-claro);
+        color: var(--color-verde-principal);
+        transform: none;
+    }
+    .nav-links.active a.active {
+        background-color: var(--color-verde-principal);
+        color: var(--color-blanco) !important;
+    }
+
+    .nav-close {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        color: var(--color-texto-base);
+        cursor: pointer;
+        /* CORRECCIÓN: Z-index para que el botón de cerrar esté SOBRE el menú */
+        z-index: 1060;
+    }
+    
+    .overlay {
+        display: none; /* Oculto por defecto */
+    }
+
+    /* ESTADO ACTIVO DEL FONDO OSCURO */
+    .overlay.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* CORRECCIÓN: Z-index para que esté DEBAJO del menú */
+        z-index: 1040; 
+    }
+}

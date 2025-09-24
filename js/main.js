@@ -79,4 +79,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+// --- Lógica para el menú hamburguesa en móviles (ACTUALIZADO) ---
+    const navToggle = document.querySelector('.nav-toggle');
+    const navClose = document.querySelector('.nav-close');
+    const navLinksContainer = document.querySelector('.nav-links');
+    const allNavLinks = document.querySelectorAll('.nav-links a');
+    const overlay = document.querySelector('.overlay');
+
+    const openMenu = () => {
+        navLinksContainer.classList.add('active');
+        overlay.classList.add('active');
+    };
+
+    const closeMenu = () => {
+        navLinksContainer.classList.remove('active');
+        overlay.classList.remove('active');
+    };
+
+    if (navToggle && navLinksContainer && navClose && overlay) {
+        navToggle.addEventListener('click', openMenu);
+        navClose.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        allNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
 });
