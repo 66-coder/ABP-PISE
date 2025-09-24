@@ -31,32 +31,28 @@ h1, h2, h3, .hero-button, .emergency-nav a {
    ========================================================================== */
 
 /* --- Barra de Navegación --- */
-/* --- Barra de Navegación --- */
 .emergency-nav {
     background: var(--color-blanco);
     display: flex;
-    /* La clave: separa los elementos a los extremos */
     justify-content: space-between; 
-    align-items: center; /* Alinea verticalmente logo y enlaces */
-    padding: 10px 40px; /* Más padding horizontal */
+    align-items: center;
+    padding: 10px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para el contenedor del logo */
 .nav-logo img {
-    height: 45px; /* Tamaño del logo */
+    height: 45px;
     width: auto;
-    display: block; /* Evita espacios extra debajo de la imagen */
+    display: block;
 }
 
-/* Estilo para el contenedor de los enlaces */
 .nav-links {
     display: flex;
-    gap: 1.5rem; /* Espacio entre los enlaces */
-    flex-wrap: wrap; /* Para que se adapte en móviles */
+    gap: 1.5rem;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -78,7 +74,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     transform: translateY(-2px);
 }
 
-/* Estilos para cada enlace individual */
 .emergency-nav a {
     text-decoration: none;
     color: var(--color-azul-principal);
@@ -116,7 +111,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
    3. Introduccion Pagina - Mejorado
    ========================================================================== */
 
-   .hero-section {
+.hero-section {
     background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('../images/colegio-fondo.jpg');
     background-size: cover;
     background-position: center;
@@ -175,52 +170,15 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 }
 
 /* Animaciones */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes growLine { to { width: 100px; opacity: 1; } }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes growLine {
-    from {
-        width: 0;
-        opacity: 0;
-    }
-    to {
-        width: 100px;
-        opacity: 1;
-    }
-}
 /* ==========================================================================
    4. Componentes de la Página
    ========================================================================== */
 
-/* --- Contenedor de Sección de Emergencia --- */
 .emergency-section {
     background-color: var(--color-blanco);
     border-radius: 15px;
@@ -228,11 +186,10 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     margin: 40px auto;
     max-width: 1200px;
     border-top: 5px solid var(--color-verde-principal);
-    padding: 70px 30px;
+    padding: 60px 45px; /* <-- CAMBIO 3: Más espacio lateral y menos vertical */
     overflow: hidden;
-    scroll-margin-top: 200px;
+    scroll-margin-top: 90px; /* <-- CAMBIO 1: Ajuste para el menú pegajoso */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
 }
 
 .emergency-section:hover {
@@ -248,16 +205,16 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     margin: 0 auto;
 }
 
+.emergency-text {
+    flex: 1.2; /* <-- CAMBIO 3: Da más espacio al texto que a la imagen */
+    min-width: 300px;
+}
 
-
-/* --- Columnas de Texto e Imagen --- */
-.emergency-text,
 .emergency-media {
     flex: 1;
     min-width: 300px;
 }
 
-/* --- Elementos de Texto Dentro de las Secciones --- */
 .emergency-text h2 {
     color: var(--color-azul-principal);
     font-size: 2.5em;
@@ -268,9 +225,9 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 .emergency-text h2::before {
     content: '';
     display: block;
-    width: 60px;
+    width: 120px; /* <-- CAMBIO 2: Línea superior más ancha y lineal */
     height: 4px;
-    background-color: var(--color-verde-principal); /* Cambié el color para que contraste más */
+    background-color: var(--color-verde-principal);
     margin-bottom: 15px;
 }
 
@@ -279,22 +236,22 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     font-size: 1.1em;
 }
 
-/* --- Estilos mejorados para la lista de pasos --- */
 .steps-list {
-    list-style: none; /* Quitamos los números por defecto */
-    counter-reset: steps-counter; /* Iniciamos un contador */
+    list-style: none;
+    counter-reset: steps-counter;
     padding-left: 0;
+    margin-top: 15px; /* <-- CAMBIO 3: Reduce el espacio sobre la lista */
 }
 
 .steps-list li {
-    counter-increment: steps-counter; /* Aumentamos el contador en cada 'li' */
-    margin-bottom: 15px; /* Un poco más de espacio */
+    counter-increment: steps-counter;
+    margin-bottom: 15px;
     position: relative;
-    padding-left: 50px; /* Hacemos espacio para el número personalizado */
+    padding-left: 50px;
 }
 
 .steps-list li::before {
-    content: counter(steps-counter); /* Mostramos el número del contador */
+    content: counter(steps-counter);
     position: absolute;
     left: 0;
     top: -2px;
@@ -309,8 +266,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     align-items: center;
 }
 
-
-/* --- Componentes Adicionales --- */
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -320,23 +275,22 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    display: none; /* Oculto por defecto */
+    display: none;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     text-decoration: none;
     transition: opacity 0.3s, transform 0.3s;
     opacity: 0;
-    transform: translateY(100px); /* Empieza fuera de la pantalla */
+    transform: translateY(100px);
 }
 
 .back-to-top.visible {
     display: flex;
     opacity: 1;
-    transform: translateY(0); /* Vuelve a su posición */
+    transform: translateY(0);
 }
 
-/* --- Elementos Multimedia (Imágenes) --- */
 .emergency-media img {
     width: 100%;
     height: auto;
@@ -349,7 +303,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     transform: scale(1.03);
 }
 
-
 /* ==========================================================================
    5. Diseño Responsivo para Móviles
    ========================================================================== */
@@ -360,138 +313,70 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         flex-direction: column;
         text-align: center;
     }
-
-    .emergency-text {
-        order: 2; /* El texto va después de la imagen */
-    }
-
-    .emergency-media {
-        order: 1; /* La imagen va primero */
-        width: 90%;
-        margin-bottom: 20px;
-    }
-
-    .emergency-text h2 {
-        font-size: 2em; /* Reducimos un poco el tamaño del título en móvil */
-    }
-
-    .emergency-text h2::before {
-        margin-left: auto; /* Centra la línea decorativa en móvil */
-        margin-right: auto;
-    }
+    .emergency-text { order: 2; }
+    .emergency-media { order: 1; width: 90%; margin-bottom: 20px; }
+    .emergency-text h2 { font-size: 2em; }
+    .emergency-text h2::before { margin-left: auto; margin-right: auto; }
 }
 
-
-
 /* ==========================================================================
-   6. Bordes Laterales Animados - Efecto Sutil
+   6. Bordes Laterales Animados y Barra Superior
    ========================================================================== */
 
-   .side-animation {
+.side-animation {
     position: fixed;
     top: 0;
     height: 100vh;
     width: 5px;
     z-index: -1;
     pointer-events: none;
-    background: linear-gradient(to bottom, transparent, rgba(131, 184, 26, 0.6), transparent);
     opacity: 0.6;
-    animation: floatLeft 1s infinite alternate;
 }
+.left { left: 0; background: linear-gradient(to bottom, transparent, rgba(131, 184, 26, 0.6), transparent); animation: floatLeft 1s infinite alternate; }
+.right { right: 0; background: linear-gradient(to bottom, transparent, rgba(0, 68, 122, 0.6), transparent); animation: floatRight 1s infinite alternate; }
 
-.left {
-    left: 0;
-}
+@keyframes floatLeft { to { transform: translateY(-20px); } }
+@keyframes floatRight { to { transform: translateY(20px); } }
 
-.right {
-    right: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0, 68, 122, 0.6), transparent);
-    animation: floatRight 1s infinite alternate;
-}
-
-@keyframes floatLeft {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
-}
-
-@keyframes floatRight {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(20px);
-    }
-}
-/* --- Estilos para la Barra Superior de Contacto --- */
 .top-bar {
-    background-color: #00447A; /* Color azul oscuro principal */
+    background-color: #00447A;
     color: white;
-    padding: 9px 0; /* Relleno vertical para hacerla delgada */
-     margin-left: -30px;
+    padding: 9px 0;
     font-family: Arial, sans-serif;
     font-size: 14px;
 }
-
 .top-bar-container {
     display: flex;
-    justify-content: space-between; /* Pone los elementos en los extremos */
-    align-items: center; /* Centra verticalmente */
-    
-    /* Limita el ancho y centra el contenido en la página */
+    justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px; /* Espacio en los costados */
+    padding: 0 30px;
 }
-
-/* --- Estilos para los íconos de la derecha --- */
-.top-bar-right {
-    display: flex;
-    gap: 10px; /* Espacio entre los círculos */
-}
-
+.top-bar-right { display: flex; gap: 10px; }
 .top-bar-right a {
-    background-color: white; /* Fondo inicial del círculo: BLANCO */
-    color: #00447A; /* Color inicial del ícono: AZUL OSCURO */
+    background-color: white;
+    color: #00447A;
     text-decoration: none;
-    
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    
-    /* Creación del círculo */
     width: 27px;
     height: 27px;
     border: 1.5px solid white;
-    border-radius: 50%; /* Esto hace que sea un círculo perfecto */
-    
-    /* Centrado del ícono dentro del círculo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* Transición suave para el efecto hover */
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* Efecto al pasar el mouse sobre los íconos */
 .top-bar-right a:hover {
-        background-color: #83B81A; /* Fondo al pasar el mouse: VERDE/AMARILLO */
-        color: white;              /* Color del ícono al pasar el mouse: BLANCO */
-        border-color: #83B81A;     /* Borde al pasar el mouse: VERDE/AMARILLO */
+    background-color: #83B81A;
+    color: white;
+    border-color: #83B81A;
 }
 
 /* ==========================================================================
-   7. Nuevo Pie de Página (VERSIÓN FINAL Y CORRECTA)
+   7. Nuevo Pie de Página
    ========================================================================== */
 
 .new-footer {
@@ -504,7 +389,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     padding-top: 40px;
 }
 
-/* --- Contenedor superior (logo e info) --- */
 .footer-top {
     display: flex;
     justify-content: space-around;
@@ -515,83 +399,20 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     flex-wrap: wrap;
     gap: 30px;
 }
+.footer-column { flex: 1; min-width: 300px; }
+.footer-logo { text-align: center; }
+.footer-logo img { height: 90px; width: auto; transition: transform 0.5s ease; }
+.footer-logo a:hover img { transform: scale(1.1); }
+.footer-contact { text-align: left; }
+.footer-social { display: flex; gap: 15px; margin-bottom: 20px; }
+.footer-social a { color: var(--color-blanco); font-size: 18px; transition: color 0.3s ease, transform 0.3s ease; }
+.footer-social a .fab { font-family: "Font Awesome 6 Brands"; font-weight: 400; }
+.footer-social a:hover { color: var(--color-verde-principal); transform: scale(1.1); }
+.footer-separator { border: 0; height: 2px; background-color: var(--color-blanco); opacity: 0.8; margin-bottom: 20px; }
+.contact-info p { margin: 8px 0; font-size: 14px; }
+.contact-info a { color: var(--color-celeste-claro); text-decoration: none; transition: color 0.3s ease; }
+.contact-info a:hover { color: var(--color-verde-principal); text-decoration: underline; }
 
-.footer-column {
-    flex: 1;
-    min-width: 300px;
-}
-
-/* --- Columna del Logo --- */
-.footer-logo {
-    text-align: center;
-}
-
-/* ESTA REGLA APLICA EL TAMAÑO GRANDE AL LOGO DEL FOOTER */
-.footer-logo img {
-    height: 90px;
-    width: auto;
-    transition: transform 0.5s ease;
-}
-
-.footer-logo a:hover img {
-    transform: scale(1.1);
-}
-
-/* --- Columna de Contacto --- */
-.footer-contact {
-    text-align: left;
-}
-
-/* Iconos de Redes Sociales */
-.footer-social {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.footer-social a {
-    color: var(--color-blanco);
-    font-size: 18px;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.footer-social a .fab {
-    font-family: "Font Awesome 6 Brands";
-    font-weight: 400;
-}
-
-.footer-social a:hover {
-    color: var(--color-verde-principal);
-    transform: scale(1.1);
-}
-
-/* Línea separadora */
-.footer-separator {
-    border: 0;
-    height: 2px;
-    background-color: var(--color-blanco);
-    opacity: 0.8;
-    margin-bottom: 20px;
-}
-
-/* Información de contacto */
-.contact-info p {
-    margin: 8px 0;
-    font-size: 14px;
-}
-
-.contact-info a {
-    color: var(--color-celeste-claro);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-info a:hover {
-    color: var(--color-verde-principal);
-    text-decoration: underline;
-}
-
-/* --- Barra inferior de copyright --- */
 .footer-bottom-bar {
     background-color: #00335A;
     text-align: center;
@@ -599,158 +420,18 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     font-size: 13px;
     margin-top: 30px;
 }
+.footer-bottom-bar p { margin: 0; color: rgba(255, 255, 255, 0.8); }
 
-.footer-bottom-bar p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* --- Adaptación para Móviles --- */
 @media (max-width: 768px) {
-    .footer-top {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-contact {
-        text-align: center;
-    }
-
-    .footer-social {
-        justify-content: center;
-    }
-}
-/* Estilos generales (para pantallas grandes) */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
+    .footer-top { flex-direction: column; text-align: center; }
+    .footer-contact { text-align: center; }
+    .footer-social { justify-content: center; }
 }
 
-.hero-title {
-    font-size: 3rem;
-}
+/* ==========================================================================
+   8. Media Queries Adicionales (Duplicados Eliminados)
+   ========================================================================== */
 
-.hero-subtitle {
-    font-size: 1.5rem;
-}
-
-.emergency-section {
-    padding: 40px 0;
-}
-
-/* Media Queries para pantallas pequeñas (móviles) */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem; /* Reducir el tamaño de la fuente en pantallas pequeñas */
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .emergency-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .emergency-text {
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .steps-list {
-        padding-left: 0;
-        list-style-type: none;
-    }
-
-    .steps-list li {
-        margin: 10px 0;
-    }
-
-    .emergency-media {
-        width: 80%;
-        margin-top: 20px;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .nav-links a {
-        font-size: 1.2rem;
-    }
-
-    .footer-contact {
-        text-align: center;
-    }
-
-    .footer-social a {
-        font-size: 1.5rem;
-        margin: 10px;
-    }
-
-    .footer-bottom-bar {
-        font-size: 0.9rem;
-        text-align: center;
-        padding: 10px 0;
-    }
-}
-
-/* Media Queries para pantallas más pequeñas (dispositivos móviles en orientación vertical) */
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 1.6rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .nav-links a {
-        font-size: 1.1rem;
-    }
-
-    .footer-social a {
-        font-size: 1.3rem;
-    }
-
-    .footer-contact p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Media Queries para pantallas extra grandes (por ejemplo, tablets o pantallas grandes) */
-@media (min-width: 1200px) {
-    .hero-title {
-        font-size: 4rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.8rem;
-    }
-
-    .emergency-content {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-
-    .emergency-media {
-        width: 50%;
-    }
-
-    .nav-links {
-        display: flex;
-        justify-content: space-around;
-        gap: 15px;
-    }
-
-    .footer-social a {
-        font-size: 1.8rem;
-    }
-}
+/* NOTA: He eliminado las media queries duplicadas al final de tu archivo original
+   para evitar conflictos y mantener el código limpio. Las reglas responsivas
+   principales están en la sección 5 y se complementan con las del footer. */

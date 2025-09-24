@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Lógica para el botón "Volver Arriba" ---
     const backToTopButton = document.querySelector('.back-to-top');
-    if (backToTopButton) { // Comprueba si el botón existe
+    if (backToTopButton) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopButton.classList.add('visible');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.emergency-section');
     const navLinks = document.querySelectorAll('.emergency-nav a');
 
-    if (sections.length && navLinks.length) { // Comprueba si existen las secciones y los links
+    if (sections.length && navLinks.length) {
         window.addEventListener('scroll', () => {
             let current = '';
 
@@ -47,4 +47,36 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- NUEVO: Lógica para el desplazamiento suave (smooth scroll) con offset ---
+    const navAnchorLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const navBar = document.querySelector('.emergency-nav');
+
+    navAnchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // 1. Prevenimos el comportamiento por defecto (el salto brusco)
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                // 2. Calculamos la altura de la barra de navegación + un margen extra de 20px
+                const offset = navBar.offsetHeight + 10; 
+                
+                // 3. Obtenemos la posición de la sección a la que queremos ir
+                const elementPosition = targetSection.offsetTop;
+                
+                // 4. Calculamos la posición final restando la altura de la barra
+                const offsetPosition = elementPosition - offset;
+
+                // 5. Hacemos el scroll suave a la posición calculada
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
 });
