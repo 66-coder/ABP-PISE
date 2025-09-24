@@ -1,9 +1,9 @@
-/* ==========================================================================
-   1. Variables y Estilos Globales v2 (CON CORRECCIONES)
-   ========================================================================== */
+/* =============================================================
+    1. VARIABLES Y ESTILOS GLOBALES
+    ============================================================= */
 
 :root {
-    /* Paleta de Colores */
+    /* Paleta de colores principal */
     --color-azul-principal: #00447A;
     --color-verde-principal: #83B81A;
     --color-verde-secundario: #73BA00;
@@ -14,10 +14,8 @@
     --color-borde-suave: #ddd;
 }
 
-/* CORRECCIÓN: Evita desbordamientos y problemas de tamaño */
-* {
-    box-sizing: border-box;
-}
+/* Box-sizing global para evitar desbordamientos */
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -25,17 +23,16 @@ body {
     background-color: var(--color-fondo-claro);
     color: var(--color-texto-base);
     line-height: 1.6;
-    /* CORRECCIÓN: Elimina la barra de scroll horizontal */
-    overflow-x: hidden; 
+    overflow-x: hidden; /* Evita scroll horizontal */
 }
 
 h1, h2, h3, .hero-button, .emergency-nav a {
     font-family: 'Poppins', sans-serif;
 }
 
-/* ==========================================================================
-   2. Estructura Principal (Layout)
-   ========================================================================== */
+/* =============================================================
+    2. ESTRUCTURA PRINCIPAL (LAYOUT)
+    ============================================================= */
 
 /* --- Barra de Navegación --- */
 .emergency-nav {
@@ -46,7 +43,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     padding: 10px 40px;
     position: sticky;
     top: 0;
-    z-index: 1050; /* <--- POR ESTA LÍNEA */
+    z-index: 1050;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -90,9 +87,9 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     display: none;
 }
 
-/* ==========================================================================
-   3. Introduccion Pagina
-   ========================================================================== */
+/* =============================================================
+    3. INTRODUCCIÓN PÁGINA PRINCIPAL
+    ============================================================= */
 
 .hero-section {
     background-image: linear-gradient(rgba(0, 68, 122, 0.8), rgba(0, 68, 122, 0.8)), url('../images/colegio-fondo.jpg');
@@ -102,6 +99,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     text-align: center;
     padding: 100px 20px;
     margin-bottom: 40px;
+    /* Sección principal de bienvenida */
 }
 
 .hero-content {
@@ -127,9 +125,9 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     margin: 0 auto;
 }
 
-/* ==========================================================================
-   4. Componentes de la Página
-   ========================================================================== */
+/* =============================================================
+    4. COMPONENTES DE LA PÁGINA (SECCIONES DE EMERGENCIA)
+    ============================================================= */
 
 .emergency-section {
     background-color: var(--color-blanco);
@@ -142,20 +140,24 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     padding: 60px 45px;
     overflow: hidden;
     scroll-margin-top: 90px;
+    /* Sección individual de emergencia */
 }
 
 .emergency-content {
     display: flex;
     align-items: center;
     gap: 40px;
+    /* Contenedor de texto e imagen */
 }
 
 .emergency-text {
     flex: 1.2;
+    /* Texto descriptivo de la emergencia */
 }
 
 .emergency-media {
     flex: 1;
+    /* Imagen o multimedia de la emergencia */
 }
 
 .emergency-text h2 {
@@ -163,6 +165,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     font-size: 2.5em;
     margin-top: 0;
     margin-bottom: 20px;
+    /* Título de cada sección */
 }
 
 .emergency-text h2::before {
@@ -172,11 +175,13 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     height: 4px;
     background-color: var(--color-verde-principal);
     margin-bottom: 15px;
+    /* Línea decorativa bajo el título */
 }
 
 .risk-description {
     margin-bottom: 25px;
     font-size: 1.1em;
+    /* Descripción breve del riesgo */
 }
 
 .steps-list {
@@ -184,6 +189,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     counter-reset: steps-counter;
     padding-left: 0;
     margin-top: 15px;
+    /* Lista de pasos numerados */
 }
 
 .steps-list li {
@@ -208,8 +214,11 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Números circulares para los pasos */
 }
 
+
+/* Botón flotante para volver arriba */
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -243,14 +252,15 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 }
 
 
-/* ==========================================================================
-   5. BORDES, FOOTER Y OTROS
-   ========================================================================== */
+/* =============================================================
+    5. BORDES, FOOTER Y OTROS COMPONENTES
+    ============================================================= */
 
 .top-bar {
     background-color: #00447A;
     color: white;
     padding: 9px 20px;
+    /* Barra superior informativa */
 }
 .top-bar-container {
     display: flex;
@@ -295,6 +305,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     padding: 20px;
     flex-wrap: wrap;
     gap: 30px;
+    /* Contenedor superior del footer */
 }
 .footer-column { flex: 1; min-width: 280px; }
 .footer-logo img { height: 90px; }
@@ -312,25 +323,24 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     padding: 15px 20px;
     font-size: 13px;
     margin-top: 30px;
+    /* Barra inferior del footer */
 }
 
-/* ==========================================================================
-   6. DISEÑO RESPONSIVO PARA MÓVILES (TODO EN UN SOLO LUGAR)
-   ========================================================================== */
+/* =============================================================
+    6. DISEÑO RESPONSIVO PARA MÓVILES
+    ============================================================= */
 
 @media (max-width: 900px) {
 
-    /* --- AJUSTES GENERALES DEL CONTENIDO --- */
+    /* --- Ajustes generales del contenido --- */
     .emergency-content {
         flex-direction: column;
     }
     .emergency-section {
-        /* CORRECCIÓN: Secciones menos apretadas */
         padding: 30px 25px; 
         width: 92%;
     }
     .emergency-text h2 { 
-        /* CORRECCIÓN: Título más pequeño */
         font-size: 1.8em; 
     }
     .risk-description, .steps-list li { 
@@ -355,7 +365,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     }
 
 
-    /* --- MENÚ HAMBURGUESA CORREGIDO --- */
+    /* --- Menú hamburguesa para móviles --- */
     .nav-toggle {
         display: flex;
         align-items: center;
@@ -368,7 +378,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         height: 40px;
         font-size: 24px;
         cursor: pointer;
-        z-index: 1100; /* Debe estar por encima de todo */
+        z-index: 1100;
     }
     
     .emergency-nav {
@@ -376,13 +386,12 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     }
     
     .nav-links {
-        /* Ocultamos los links de la barra */
         display: none;
     }
 
-    /* ESTADO ACTIVO DEL MENÚ (cuando se hace clic) */
+    /* Estado activo del menú hamburguesa */
     .nav-links.active {
-        display: flex; /* Hacemos visible el menú */
+        display: flex;
         position: fixed;
         top: 0;
         right: 0;
@@ -396,8 +405,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         gap: 0;
         transform: translateX(0);
         box-shadow: -5px 0 25px rgba(0,0,0,0.15);
-        /* CORRECCIÓN: Z-index para que el menú esté SOBRE el fondo oscuro */
-        z-index: 1050; 
+        z-index: 1050;
     }
     
     .nav-links.active a {
@@ -430,15 +438,14 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         font-size: 28px;
         color: var(--color-texto-base);
         cursor: pointer;
-        /* CORRECCIÓN: Z-index para que el botón de cerrar esté SOBRE el menú */
         z-index: 1060;
     }
     
     .overlay {
-        display: none; /* Oculto por defecto */
+        display: none;
     }
 
-    /* ESTADO ACTIVO DEL FONDO OSCURO */
+    /* Fondo oscuro cuando el menú está activo */
     .overlay.active {
         display: block;
         position: fixed;
@@ -447,7 +454,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
-        /* CORRECCIÓN: Z-index para que esté DEBAJO del menú */
-        z-index: 1040; 
+        z-index: 1040;
     }
 }
