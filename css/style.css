@@ -121,7 +121,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
     color: white;
     text-align: center;
     padding: 120px 20px;
