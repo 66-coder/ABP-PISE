@@ -46,7 +46,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     padding: 10px 40px;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1050; /* <--- POR ESTA LÍNEA */
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
 }
 
