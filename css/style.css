@@ -456,4 +456,38 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 1040;
     }
+
+    /* Estilos para el contenido decorativo en el menú móvil */
+    .nav-footer {
+        margin-top: auto; 
+        padding: 10px 5px; /* <--- CORREGIDO: Menos relleno lateral */
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid var(--color-fondo-claro);
+    }
+
+    .nav-footer-social {
+        display: flex;
+        justify-content: center;
+        gap: -20px; /* <--- CORREGIDO: Menos espacio para compactar */
+        margin-bottom: 15px;
+    }
+
+    .nav-footer-social a {
+        color: var(--color-azul-principal);
+        font-size: 20px;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-footer-social a:hover {
+        color: var(--color-verde-principal);
+        transform: scale(1.1);
+    }
+
+    .nav-footer-text {
+        font-size: 0.8em;
+        color: #534c4c; /* Un gris suave para no quitar protagonismo */
+        margin: 0;
+    }
+
 }
