@@ -256,75 +256,80 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     5. BORDES, FOOTER Y OTROS COMPONENTES
     ============================================================= */
 
-.top-bar {
-    background-color: #00447A;
-    color: white;
-    padding: 9px 20px;
-    /* Barra superior informativa */
-}
-.top-bar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.top-bar-right { display: flex; gap: 10px; }
-.top-bar-right a {
-    background-color: white;
-    color: #00447A;
-    width: 27px;
-    height: 27px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    border: 1.5px solid white;
-    text-decoration: none;
-}
-.top-bar-right a:hover {
-    background-color: #83B81A;
-    color: white;
-}
 
-.new-footer {
-    background-color: var(--color-azul-principal);
-    background-size: cover;
-    background-position: center top;
-    color: var(--color-blanco);
-    padding-top: 40px;
-}
+    .nav-footer {
+    display: none;
+    }
 
-.footer-top {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    flex-wrap: wrap;
-    gap: 30px;
-    /* Contenedor superior del footer */
-}
-.footer-column { flex: 1; min-width: 280px; }
-.footer-logo img { height: 90px; }
-.footer-contact { text-align: left; }
-.footer-social { display: flex; gap: 15px; margin-bottom: 20px; }
-.footer-social a { color: var(--color-blanco); font-size: 18px; text-decoration: none; }
-.footer-separator { border: 0; height: 1px; background-color: rgba(255, 255, 255, 0.5); }
-.contact-info p { margin: 8px 0; font-size: 14px; }
-.contact-info a { color: var(--color-celeste-claro); text-decoration: none; }
-.contact-info a:hover { text-decoration: underline; }
+    .top-bar {
+        background-color: #00447A;
+        color: white;
+        padding: 9px 20px;
+        /* Barra superior informativa */
+    }
+    .top-bar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .top-bar-right { display: flex; gap: 10px; }
+    .top-bar-right a {
+        background-color: white;
+        color: #00447A;
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        border: 1.5px solid white;
+        text-decoration: none;
+    }
+    .top-bar-right a:hover {
+        background-color: #83B81A;
+        color: white;
+    }
 
-.footer-bottom-bar {
-    background-color: #00335A;
-    text-align: center;
-    padding: 15px 20px;
-    font-size: 13px;
-    margin-top: 30px;
-    /* Barra inferior del footer */
-}
+    .new-footer {
+        background-color: var(--color-azul-principal);
+        background-size: cover;
+        background-position: center top;
+        color: var(--color-blanco);
+        padding-top: 40px;
+    }
+
+    .footer-top {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        flex-wrap: wrap;
+        gap: 30px;
+        /* Contenedor superior del footer */
+    }
+    .footer-column { flex: 1; min-width: 280px; }
+    .footer-logo img { height: 90px; }
+    .footer-contact { text-align: left; }
+    .footer-social { display: flex; gap: 15px; margin-bottom: 20px; }
+    .footer-social a { color: var(--color-blanco); font-size: 18px; text-decoration: none; }
+    .footer-separator { border: 0; height: 1px; background-color: rgba(255, 255, 255, 0.5); }
+    .contact-info p { margin: 8px 0; font-size: 14px; }
+    .contact-info a { color: var(--color-celeste-claro); text-decoration: none; }
+    .contact-info a:hover { text-decoration: underline; }
+
+    .footer-bottom-bar {
+        background-color: #00335A;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: 13px;
+        margin-top: 30px;
+        /* Barra inferior del footer */
+    }
 
 /* =============================================================
     6. DISEÑO RESPONSIVO PARA MÓVILES
@@ -363,7 +368,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     .footer-social {
         justify-content: center;
     }
-
 
     /* --- Menú hamburguesa para móviles --- */
     .nav-toggle {
@@ -459,8 +463,9 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 
     /* Estilos para el contenido decorativo en el menú móvil */
     .nav-footer {
+        display: block;
         margin-top: auto; 
-        padding: 10px 5px; /* <--- CORREGIDO: Menos relleno lateral */
+        padding: 20px 30px; /* <--- CORREGIDO: Menos relleno lateral */
         width: 100%;
         text-align: center;
         border-top: 1px solid var(--color-fondo-claro);
@@ -469,13 +474,12 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     .nav-footer-social {
         display: flex;
         justify-content: center;
-        gap: -20px; /* <--- CORREGIDO: Menos espacio para compactar */
-        margin-bottom: 15px;
+        margin: auto;
     }
 
     .nav-footer-social a {
-        color: var(--color-azul-principal);
-        font-size: 20px;
+        color: var(--color-verde-principal);
+        font-size: 50px;
         transition: transform 0.3s ease, color 0.3s ease;
     }
 
