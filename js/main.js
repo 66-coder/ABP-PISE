@@ -48,29 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NUEVO: Lógica para el desplazamiento suave (smooth scroll) con offset ---
+    // --- Lógica para el desplazamiento suave (smooth scroll) con offset ---
     const navAnchorLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     const navBar = document.querySelector('.emergency-nav');
 
     navAnchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // 1. Prevenimos el comportamiento por defecto (el salto brusco)
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-
             if (targetSection) {
-                // 2. Calculamos la altura de la barra de navegación + un margen extra de 20px
                 const offset = navBar.offsetHeight + 10; 
-                
-                // 3. Obtenemos la posición de la sección a la que queremos ir
                 const elementPosition = targetSection.offsetTop;
-                
-                // 4. Calculamos la posición final restando la altura de la barra
                 const offsetPosition = elementPosition - offset;
-
-                // 5. Hacemos el scroll suave a la posición calculada
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
@@ -79,30 +69,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-// --- Lógica para el menú hamburguesa en móviles (ACTUALIZADO) ---
+    // --- LÓGICA DEL MENÚ HAMBURGUESA (CORREGIDA Y SIMPLIFICADA) ---
     const navToggle = document.querySelector('.nav-toggle');
-    const navClose = document.querySelector('.nav-close');
     const navLinksContainer = document.querySelector('.nav-links');
-    const allNavLinks = document.querySelectorAll('.nav-links a');
+    const allMobileNavLinks = document.querySelectorAll('.nav-links a');
     const overlay = document.querySelector('.overlay');
 
-    const openMenu = () => {
-        navLinksContainer.classList.add('active');
-        overlay.classList.add('active');
-    };
-
+    // Función para cerrar el menú (la usaremos en varios lugares)
     const closeMenu = () => {
         navLinksContainer.classList.remove('active');
         overlay.classList.remove('active');
     };
 
-    if (navToggle && navLinksContainer && navClose && overlay) {
-        navToggle.addEventListener('click', openMenu);
-        navClose.addEventListener('click', closeMenu);
-        overlay.addEventListener('click', closeMenu);
+    if (navToggle && navLinksContainer && overlay) {
+        
+        // 1. El botón hamburguesa ahora abre y cierra el menú.
+        navToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
 
-        allNavLinks.forEach(link => {
+        // 2. Cerramos el menú si se hace clic en un enlace.
+        allMobileNavLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
+
+        // 3. Cerramos el menú si se hace clic en el fondo oscuro.
+        overlay.addEventListener('click', closeMenu);
     }
 });

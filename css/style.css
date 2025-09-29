@@ -347,10 +347,23 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     .emergency-content {
         flex-direction: column;
     }
+    
+    /* NUEVO: Adaptación de hero-section para móviles */
+    .hero-section {
+        background-position: center center;
+        background-size: cover;
+        padding: 120px 20px;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     .emergency-section {
         padding: 30px 25px; 
         width: 92%;
     }
+
     .emergency-text h2 { 
         font-size: 1.8em; 
     }
@@ -422,7 +435,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         font-size: 1.1rem;
         width: 100%;
         padding: 18px 30px;
-        border-bottom: 1px solid var(--color-blanco);
         border-radius: 0;
         color: var(--color-azul-principal);
         font-weight: 600;
@@ -440,7 +452,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 
     .nav-close {
         display: block;
-        position: absolute;
+        position: fixed;  /* ← CAMBIADO A FIXED */
         top: 20px;
         right: 25px;
         background: none;
