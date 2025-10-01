@@ -141,6 +141,73 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     scroll-margin-top: 90px;
     /* Sección individual de emergencia */
 }
+.emergency-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.read-more-button {
+    background-color: var(--color-azul-principal);
+    color: var(--color-blanco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-flex; /* Para alinear el icono */
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.read-more-button:hover {
+    background-color: var(--color-verde-secundario);
+    color: var(--color-texto-base);
+    transform: translateY(-1px);
+}
+
+.read-more-button i {
+    transition: transform 0.3s ease;
+}
+
+/* Estado del botón cuando el contenido está abierto (se rota el icono) */
+.read-more-button.expanded i {
+    transform: rotate(180deg);
+}
+
+.detailed-explanation {
+    margin-top: 20px;
+    padding: 20px;
+    border-left: 5px solid var(--color-verde-principal);
+    background-color: var(--color-fondo-claro);
+    border-radius: 0 5px 5px 0;
+    line-height: 1.7;
+    /* ESTILO CLAVE: Ocultar por defecto (se mostrará con JavaScript) */
+    display: none; 
+    opacity: 0; /* Para la transición */
+    max-height: 0; /* Para la transición */
+    overflow: hidden; /* Para la transición */
+    transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease;
+}
+
+.detailed-explanation.active {
+    display: block;
+    opacity: 1;
+    max-height: 500px; /* Valor suficiente para cualquier contenido */
+    padding: 20px;
+}
+
+.detailed-explanation h4 {
+    color: var(--color-verde-secundario);
+    margin-top: 0;
+}
+
+.detailed-explanation ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
 
 .emergency-content {
     display: flex;
@@ -511,5 +578,42 @@ h1, h2, h3, .hero-button, .emergency-nav a {
         color: #534c4c; /* Un gris suave para no quitar protagonismo */
         margin: 0;
     }
+
+    /* =============================================================
+    7. FUNCIONALIDAD "LEER MÁS"
+   ============================================================= */
+
+/* Contenedor de la información adicional (oculto por defecto) */
+.more-info {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out; /* Animación suave */
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+/* Estado visible del contenido (se activa con JavaScript) */
+.more-info.show {
+    max-height: 1000px; /* Un valor alto para que quepa todo el contenido */
+}
+
+/* Estilo del botón "Leer más" */
+.read-more-btn {
+    background-color: var(--color-verde-principal);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: var(--color-verde-secundario);
+}
 
 }

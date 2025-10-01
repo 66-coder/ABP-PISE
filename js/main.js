@@ -98,3 +98,34 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.addEventListener('click', closeMenu);
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- Lógica para el botón "Leer más" ---
+
+    // 1. Seleccionamos todos los botones que tengan la clase "read-more-btn"
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+
+    // 2. Recorremos cada botón para agregarle la funcionalidad
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 3. Obtenemos el ID del contenido a mostrar (desde el atributo data-target)
+            const targetId = this.dataset.target;
+            const content = document.querySelector(targetId);
+
+            if (content) {
+                // 4. Alternamos la clase 'show' para mostrar u ocultar el contenido
+                content.classList.toggle('show');
+
+                // 5. Cambiamos el texto del botón según si el contenido está visible o no
+                if (content.classList.contains('show')) {
+                    this.textContent = 'Leer menos';
+                } else {
+                    this.textContent = 'Leer más';
+                }
+            }
+        });
+    });
+
+    // ... aquí puede ir el resto de tu código JavaScript ...
+
+});
