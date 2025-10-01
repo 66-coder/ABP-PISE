@@ -96,9 +96,23 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     background-position: center;
     color: white;
     text-align: center;
-    padding: 200px 20px;
-    margin-bottom: 40px;
+    padding: 200px 20px 140px 20px;
+    margin-bottom: 0px;
+    position: relative;
     /* Sección principal de bienvenida */
+}
+/* ESTILOS PARA EL SVG (AÑADIR ESTO AL FINAL DE TU CSS) */
+.hero-section svg {
+    position: absolute; /* Se posiciona sobre la sección hero */
+    bottom: -1px;       /* Lo pegamos al borde inferior */
+    left: 0;
+    width: 100%;        /* Ocupa todo el ancho */
+    height: auto;       /* Altura automática para mantener la proporción */
+    display: block;
+}
+/* Ajuste para que el fill del SVG use la variable de color de fondo */
+.hero-section svg path {
+    fill: var(--color-fondo-claro); /* Usa la variable de tu paleta de colores */
 }
 
 .hero-content {
