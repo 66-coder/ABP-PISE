@@ -1,4 +1,4 @@
-    /* =============================================================
+/* =============================================================
     1. VARIABLES Y ESTILOS GLOBALES
     ============================================================= */
 
@@ -159,7 +159,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 .read-more-button {
     background-color: var(--color-azul-principal);
@@ -323,14 +323,6 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     opacity: 1;
     transform: translateY(0);
 }
-
-.emergency-media img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
 
 /* =============================================================
     5. BORDES, FOOTER Y OTROS COMPONENTES
