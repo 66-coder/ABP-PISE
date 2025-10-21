@@ -177,12 +177,11 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     scroll-margin-top: 90px;
     /* Sección individual de emergencia */
 }
-/* Estilo para iframes responsivos (video de YouTube) */
-.emergency-media iframe {
-    width: 100%;       /* Ocupa todo el ancho del contenedor */
-    aspect-ratio: 1/1; /* Fuerza a que sea cuadrado (como la foto original) */
-    border: none;      /* Quita el borde por defecto del iframe */
-    border-radius: 10px; /* Mantiene los bordes redondeados del diseño */
+.emergency-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
 .detailed-explanation {
