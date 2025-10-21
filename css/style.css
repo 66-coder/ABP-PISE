@@ -177,11 +177,14 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     scroll-margin-top: 90px;
     /* Sección individual de emergencia */
 }
-.emergency-media img {
+.emergency-media img,
+.emergency-media iframe {
     width: 100%;
     height: auto;
+    aspect-ratio: 16 / 9;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: block;
 }
 
 .detailed-explanation {
@@ -229,7 +232,7 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 }
 
 .emergency-media {
-    flex: 1;
+    flex: 1.5;
     /* Imagen o multimedia de la emergencia */
 }
 
