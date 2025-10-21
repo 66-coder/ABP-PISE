@@ -96,10 +96,15 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     background-position: center;
     color: white;
     text-align: center;
-    padding: 200px 20px 140px 20px;
-    margin-bottom: 0px;
     position: relative;
-    /* Sección principal de bienvenida */
+    margin-bottom: 0px;
+
+    /* --- ESTILOS NUEVOS PARA CENTRAR --- */
+    display: flex;                 /* 1. Activa el modo flexible */
+    align-items: center;           /* 2. Centra el contenido verticalmente */
+    justify-content: center;       /* 3. Centra el contenido horizontalmente */
+    min-height: 90vh;              /* 4. Le da una altura mínima (90% de la ventana) */
+    padding: 40px 20px;            /* 5. Un relleno de seguridad para pantallas chicas */
 }
 /* ESTILOS PARA EL SVG (AÑADIR ESTO AL FINAL DE TU CSS) */
 .hero-section svg {
@@ -136,6 +141,23 @@ h1, h2, h3, .hero-button, .emergency-nav a {
     height: 4px;
     background-color: var(--color-verde-principal);
     margin: 0 auto;
+}
+.hero-subtitle {
+    font-size: 1.4em;
+    margin-bottom: 30px;
+}
+
+/* --- ESTILO NUEVO PARA EL TEXTO INTERMEDIO --- */
+.hero-tagline {
+    font-size: 2.2em;  /* Más grande que 1.4em (subtítulo) y más pequeño que 4em (título) */
+    font-weight: 700;  /* Un peso más ligero que el título */
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: var(--color-blanco); /* Usamos un color de tu paleta para destacarlo */
+}
+
+.hero-line {
+    width: 100px;
 }
 
 /* =============================================================
