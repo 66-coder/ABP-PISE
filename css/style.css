@@ -221,19 +221,31 @@ h1, h2, h3, .hero-button, .emergency-nav a {
 
 .emergency-content {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;     /* <-- ¡LA CLAVE 1! Permite que los hijos bajen */
     gap: 40px;
-    /* Contenedor de texto e imagen */
+    /* Contenedor de texto, imagen Y video */
 }
 
 .emergency-text {
-    flex: 1.2;
-    /* Texto descriptivo de la emergencia */
+    flex: 1.2;           /* Sigue igual, para la proporción */
+    min-width: 300px;    /* Evita que se encoja demasiado */
 }
 
 .emergency-media {
-    flex: 1;
-    /* Imagen o multimedia de la emergencia */
+    flex: 1.5;           /* Sigue igual, para la proporción */
+    min-width: 300px;    /* Evita que se encoja demasiado */
+}
+
+/* --- AGREGA ESTA REGLA NUEVA --- */
+/* (Puedes ponerla después de .emergency-media img) */
+
+.emergency-video-bottom {
+    flex-basis: 100%;     /* <-- ¡LA CLAVE 2! Ocupa el 100% del ancho */
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Formato 16:9 para el video */
+    border-radius: 10px;
+    border: 0;
+    margin-top: 20px;     /* Un espacio extra arriba */
 }
 
 .emergency-text h2 {
